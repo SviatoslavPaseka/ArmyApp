@@ -3,16 +3,23 @@ package com.solvd.laba.army.model;
 public abstract class Transport {
 	private String name;
 	private String model;
+	private Integer length;
+	private Integer width;
 	private Integer numberOfSeats;
-	private Boolean isFly;
+	private Boolean isUnderRepaired;
 	
 	public Transport() {}
-	public Transport(String name, String model, Integer numberOfSeats, Boolean isFly) {
+	
+	public Transport(String name, String model, Integer length, Integer width, 
+					Integer numberOfSeats, Boolean isUnderRepaired) {
 		this.name = name;
 		this.model = model;
+		this.length = length;
+		this.width = width;
 		this.numberOfSeats = numberOfSeats;
-		this.isFly = isFly;
+		this.isUnderRepaired = isUnderRepaired;
 	}
+
 	public String getName() {
 		return name;
 	}
@@ -31,11 +38,29 @@ public abstract class Transport {
 	public void setNumberOfSeats(Integer numberOfSeats) {
 		this.numberOfSeats = numberOfSeats;
 	}
-	public Boolean getIsFly() {
-		return isFly;
+
+	public Integer getLength() {
+		return length;
 	}
-	public void setIsFly(Boolean isFly) {
-		this.isFly = isFly;
+
+	public void setLength(Integer length) {
+		this.length = length;
+	}
+
+	public Integer getWidth() {
+		return width;
+	}
+
+	public void setWidth(Integer width) {
+		this.width = width;
+	}
+
+	public Boolean getIsUnderRepaired() {
+		return isUnderRepaired;
+	}
+
+	public void setIsUnderRepaired(Boolean isUnderRepaired) {
+		this.isUnderRepaired = isUnderRepaired;
 	}
 	
 	

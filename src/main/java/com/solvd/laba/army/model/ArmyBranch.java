@@ -5,11 +5,17 @@ public class ArmyBranch {
 	private String name;
 	private String location;
 	private Integer countOfPeople;
-	public ArmyBranch(Integer id, String name, String location, Integer countOfPeople) {
+	private String mainSpecialization;
+	
+	public ArmyBranch() {
+	}
+	public ArmyBranch(Integer id, String name, String location, Integer countOfPeople, String mainSpecialization) {
+		super();
 		this.id = id;
 		this.name = name;
 		this.location = location;
 		this.countOfPeople = countOfPeople;
+		this.mainSpecialization = mainSpecialization;
 	}
 	public Integer getId() {
 		return id;
@@ -35,6 +41,10 @@ public class ArmyBranch {
 	public void setCountOfPeople(Integer countOfPeople) {
 		this.countOfPeople = countOfPeople;
 	}
-	
-	
+	public String getMainSpecialization() {
+		return mainSpecialization;
+	}
+	public void setMainSpecialization(String mainSpecialization) {
+		this.mainSpecialization = mainSpecialization;
+	}
 }

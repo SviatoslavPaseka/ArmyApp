@@ -47,11 +47,7 @@ public abstract class Person {
 	public void setDob(LocalDate dob) {
 		this.dob = dob;
 	}
-	@Override
-	public String toString() {
-		return "Person with id:" + id + ", firstname: " + firstname + ", lastname: " + lastname + 
-				", sex: " + sex + ", Date of birth: " + dob;
-	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
