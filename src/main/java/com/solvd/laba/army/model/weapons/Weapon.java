@@ -67,5 +67,4 @@ public abstract class Weapon {
 			return false;
 		return true;
 	}
-	
 }

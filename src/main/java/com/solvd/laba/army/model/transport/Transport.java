@@ -62,6 +62,5 @@ public abstract class Transport {
 	public void setIsUnderRepaired(Boolean isUnderRepaired) {
 		this.isUnderRepaired = isUnderRepaired;
 	}
-	
-	
+
 }

@@ -38,7 +38,4 @@ public class WeaponToMassDestruction extends HeavyWeapon{
 				", range=" + range + ", radiusOfEffect="+ radiusOfEffect + 
 				", getYearManufactured()=" + getYearManufactured() + ", getWeight()=" + getWeight()	+ "]";
 	}
-	
-	
-	
 }

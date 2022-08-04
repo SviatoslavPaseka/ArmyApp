@@ -4,7 +4,6 @@ public class MilitaryJeep extends MilitaryTransport{
 	private Integer id;
 	private Integer numberOfWheel;
 	
-	
 	public MilitaryJeep() {
 		super();
 	}
@@ -28,8 +27,5 @@ public class MilitaryJeep extends MilitaryTransport{
 	public void setNumberOfWheel(Integer numberOfWheel) {
 		this.numberOfWheel = numberOfWheel;
 	}
-	
-	
-	
 	
 }

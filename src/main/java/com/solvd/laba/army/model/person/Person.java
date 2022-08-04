@@ -25,39 +25,30 @@ public abstract class Person {
 	public Integer getId() {
 		return id;
 	}
-
 	public void setId(Integer id) {
 		this.id = id;
 	}
-
 	public String getFirstname() {
 		return firstname;
 	}
-
 	public void setFirstname(String firstname) {
 		this.firstname = firstname;
 	}
-
 	public String getLastname() {
 		return lastname;
 	}
-
 	public void setLastname(String lastname) {
 		this.lastname = lastname;
 	}
-
 	public Gender getGender() {
 		return gender;
 	}
-
 	public void setGender(Gender gender) {
 		this.gender = gender;
 	}
-
 	public LocalDate getDob() {
 		return dob;
 	}
-
 	public void setDob(LocalDate dob) {
 		this.dob = dob;
 	}
@@ -107,6 +98,4 @@ public abstract class Person {
 			return false;
 		return true;
 	}
-	
-	
 }

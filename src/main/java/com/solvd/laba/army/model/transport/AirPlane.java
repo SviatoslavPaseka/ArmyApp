@@ -8,8 +8,6 @@ public class AirPlane extends Transport{
 	public AirPlane() {
 	}
 	
-	
-
 	public AirPlane(String name, String model, Integer length, Integer width, 
 					Integer numberOfSeats,	Boolean isUnderRepaired, Integer id, 
 					Boolean isArmed, Boolean isPassenger) {
@@ -19,8 +17,6 @@ public class AirPlane extends Transport{
 		this.isArmed = isArmed;
 		this.isPassenger = isPassenger;
 	}
-
-
 
 	public Integer getId() {
 		return id;
@@ -40,7 +36,5 @@ public class AirPlane extends Transport{
 	public void setIsPassenger(Boolean isPassenger) {
 		this.isPassenger = isPassenger;
 	}
-	
-	
-	
+
 }

@@ -87,6 +87,4 @@ public class Soldier extends Person {
 			return false;
 		return true;
 	}
-	
-	
 }

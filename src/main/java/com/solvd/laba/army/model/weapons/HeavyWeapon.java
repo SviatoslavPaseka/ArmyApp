@@ -39,6 +39,5 @@ public class HeavyWeapon extends Weapon{
 				+ needTransportToMove + ", YearManufactured=" + getYearManufactured() + ", NumberOfBullets="
 				+ getAmountOfAmmunition() + ", Weight=" + getWeight() + "]";
 	}
-	
-	
+
 }
