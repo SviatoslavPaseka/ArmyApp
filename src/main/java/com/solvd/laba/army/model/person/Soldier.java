@@ -1,6 +1,7 @@
 package com.solvd.laba.army.model.person;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import com.solvd.laba.army.model.ArmyBranch;
 import com.solvd.laba.army.model.enums.Gender;
@@ -10,13 +11,13 @@ import com.solvd.laba.army.model.weapons.HandWeapon;
 public class Soldier extends Person {
 	private MilitaryRank militaryRank;
 	private ArmyBranch branch;
-	private HandWeapon personalWeapon;
+	private List<HandWeapon> personalWeapon;
 	
 	public Soldier() {
 	}
 
 	public Soldier(Integer id, String firstname, String lastname, Gender gender, LocalDate dob, 
-				   MilitaryRank militaryRank,	ArmyBranch branch, HandWeapon personalWeapon) {
+				   MilitaryRank militaryRank,	ArmyBranch branch, List<HandWeapon> personalWeapon) {
 		super(id, firstname, lastname, gender, dob);
 		this.militaryRank = militaryRank;
 		this.branch = branch;
@@ -35,10 +36,12 @@ public class Soldier extends Person {
 	public void setBranch(ArmyBranch branch) {
 		this.branch = branch;
 	}
-	public HandWeapon getPersonalWeapon() {
+
+	public List<HandWeapon> getPersonalWeapon() {
 		return personalWeapon;
 	}
-	public void setPersonalWeapon(HandWeapon personalWeapon) {
+
+	public void setPersonalWeapon(List<HandWeapon> personalWeapon) {
 		this.personalWeapon = personalWeapon;
 	}
 
@@ -87,4 +90,5 @@ public class Soldier extends Person {
 			return false;
 		return true;
 	}
+
 }
