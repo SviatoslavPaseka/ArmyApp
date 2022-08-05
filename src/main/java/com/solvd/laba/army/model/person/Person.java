@@ -2,6 +2,7 @@ package com.solvd.laba.army.model.person;
 
 import java.time.LocalDate;
 
+import com.solvd.laba.army.exceptoins.IncorrectDOBException;
 import com.solvd.laba.army.model.enums.Gender;
 
 public abstract class Person {
@@ -49,7 +50,10 @@ public abstract class Person {
 	public LocalDate getDob() {
 		return dob;
 	}
-	public void setDob(LocalDate dob) {
+	public void setDob(LocalDate dob) throws IncorrectDOBException {
+		if (dob.getYear() > LocalDate.now().getYear()) {
+			throw new IncorrectDOBException("the entered year of birth is greater than the current one");
+		}
 		this.dob = dob;
 	}
 
