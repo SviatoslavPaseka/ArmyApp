@@ -39,5 +39,42 @@ public class HeavyWeapon extends Weapon{
 				+ needTransportToMove + ", YearManufactured=" + getYearManufactured() + ", NumberOfBullets="
 				+ getAmountOfAmmunition() + ", Weight=" + getWeight() + "]";
 	}
-
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + ((HWId == null) ? 0 : HWId.hashCode());
+		result = prime * result + ((needTransportToMove == null) ? 0 : needTransportToMove.hashCode());
+		result = prime * result + ((peopleToManage == null) ? 0 : peopleToManage.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		HeavyWeapon other = (HeavyWeapon) obj;
+		if (HWId == null) {
+			if (other.HWId != null)
+				return false;
+		} else if (!HWId.equals(other.HWId))
+			return false;
+		if (needTransportToMove == null) {
+			if (other.needTransportToMove != null)
+				return false;
+		} else if (!needTransportToMove.equals(other.needTransportToMove))
+			return false;
+		if (peopleToManage == null) {
+			if (other.peopleToManage != null)
+				return false;
+		} else if (!peopleToManage.equals(other.peopleToManage))
+			return false;
+		return true;
+	}
+	
+	
+	
 }

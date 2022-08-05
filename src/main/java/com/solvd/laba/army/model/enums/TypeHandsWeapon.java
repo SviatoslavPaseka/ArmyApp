@@ -1,5 +1,18 @@
 package com.solvd.laba.army.model.enums;
 
 public enum TypeHandsWeapon {
-	PISTOL, RIFLE, SNIPER_RIFLE, HAND_MACHINE_GUN;
+	PISTOL("pistol"),
+	RIFLE("rifle"),
+	SNIPER_RIFLE("sniper_rifle"),
+	HAND_MACHINE_GUN("hand_machine_gun");
+	
+	private final String value;
+
+	private TypeHandsWeapon(String value) {
+		this.value = value;
+	}
+
+	public String getValue() {
+		return value;
+	}
 }
