@@ -3,12 +3,19 @@ package com.solvd.laba.army.model.person;
 import java.time.LocalDate;
 import java.util.List;
 
+import com.solvd.laba.army.exceptoins.WeaponRightsException;
 import com.solvd.laba.army.model.ArmyBranch;
 import com.solvd.laba.army.model.enums.Gender;
 import com.solvd.laba.army.model.enums.MilitaryRank;
+import com.solvd.laba.army.model.enums.RecruiterRank;
 import com.solvd.laba.army.model.weapons.HandWeapon;
 
-public class Soldier extends Person {
+/*add method doRepair*/
+/*
+ * пройти/провести медичний огляд 
+ */
+ 
+public class Soldier extends Person implements SoldierInterface{
 	private MilitaryRank militaryRank;
 	private ArmyBranch branch;
 	private List<HandWeapon> personalWeapon;
@@ -17,8 +24,9 @@ public class Soldier extends Person {
 	}
 
 	public Soldier(Integer id, String firstname, String lastname, Gender gender, LocalDate dob, 
-				   MilitaryRank militaryRank,	ArmyBranch branch, List<HandWeapon> personalWeapon) {
-		super(id, firstname, lastname, gender, dob);
+				   MilitaryRank militaryRank,	ArmyBranch branch, List<HandWeapon> personalWeapon,
+				   Boolean haveMedicalExamination) {
+		super(id, firstname, lastname, gender, dob, haveMedicalExamination);
 		this.militaryRank = militaryRank;
 		this.branch = branch;
 		this.personalWeapon = personalWeapon;
@@ -41,8 +49,11 @@ public class Soldier extends Person {
 		return personalWeapon;
 	}
 
-	public void setPersonalWeapon(List<HandWeapon> personalWeapon) {
-		this.personalWeapon = personalWeapon;
+	public void setPersonalWeapon(List<HandWeapon> personalWeapon) throws WeaponRightsException {
+		
+		if (!getMilitaryRank().equals(MilitaryRank.NONE) || !getMilitaryRank().equals(null)) {
+			this.personalWeapon = personalWeapon;
+		}else throw new WeaponRightsException("A person must have a military rank to have a hand weapon");
 	}
 
 	@Override
@@ -91,4 +102,31 @@ public class Soldier extends Person {
 		return true;
 	}
 
+	
+	public MilitaryRecruiter comeToRecruiterFromSoldier(Soldier soldier, Integer salary, RecruiterRank recruiterRank) {
+		MilitaryRecruiter militaryRecruiter = new MilitaryRecruiter(getId(),
+																	getFirstname(),
+																	getLastname(),
+																	getGender(),
+																	getDob(),
+																	recruiterRank,
+																	salary,
+																	getHaveMedicalExamination());
+		militaryRecruiter.setMilitaryRank(getMilitaryRank());
+		
+		return militaryRecruiter;
+	}
+	
+	public void cleanHandWeapon(Integer numberPersonalWeapon){
+		if (numberPersonalWeapon <= 0) {
+			System.out.println("try to enter zero and less than zero value");
+			return;
+		}
+		try {
+			getPersonalWeapon().get(numberPersonalWeapon - 1).setIsClean(true);
+		} catch (IndexOutOfBoundsException e) {
+			System.out.println(e);
+			System.out.println("This soilder has " + getPersonalWeapon().size() + " weapons!");
+		}
+	}
 }

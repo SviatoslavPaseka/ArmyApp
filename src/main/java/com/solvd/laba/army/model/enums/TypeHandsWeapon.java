@@ -1,6 +1,7 @@
 package com.solvd.laba.army.model.enums;
 
 public enum TypeHandsWeapon {
+	NONE("none"),
 	PISTOL("pistol"),
 	RIFLE("rifle"),
 	SNIPER_RIFLE("sniper_rifle"),

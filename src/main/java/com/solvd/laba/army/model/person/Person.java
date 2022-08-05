@@ -11,16 +11,19 @@ public abstract class Person {
 	private String lastname;
 	private Gender gender;
 	private LocalDate dob;
+	private Boolean haveMedicalExamination;//чи встановлена пригодність для військової служби
 
 	public Person() {
 	}
 
-	public Person(Integer id, String firstname, String lastname, Gender gender, LocalDate dob) {
+	public Person(Integer id, String firstname, String lastname, Gender gender, LocalDate dob,
+			Boolean haveMedicalExamination) {
 		this.id = id;
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.gender = gender;
 		this.dob = dob;
+		this.haveMedicalExamination = haveMedicalExamination;
 	}
 
 	public Integer getId() {
@@ -55,6 +58,14 @@ public abstract class Person {
 			throw new IncorrectDOBException("the entered year of birth is greater than the current one");
 		}
 		this.dob = dob;
+	}
+
+	public Boolean getHaveMedicalExamination() {
+		return haveMedicalExamination;
+	}
+
+	public void setHaveMedicalExamination(Boolean haveMedicalExamination) {
+		this.haveMedicalExamination = haveMedicalExamination;
 	}
 
 	@Override

@@ -4,10 +4,14 @@ import java.time.LocalDate;
 
 import com.solvd.laba.army.model.enums.TypeHandsWeapon;
 
+/*add methods: needRepaired
+ shoot
+ */
+
 public class HandWeapon extends Weapon{
 	private Integer gunId;
 	private TypeHandsWeapon typeHadsWeapon;
-	private Boolean haveAim;
+	private Boolean isClean;
 	private Boolean isAutomatic;
 	public HandWeapon() {
 	}
@@ -17,7 +21,7 @@ public class HandWeapon extends Weapon{
 		super(yearManufactured, amountOfAmmunition, weight);
 		this.gunId = gunId;
 		this.typeHadsWeapon = typeHadsWeapon;
-		this.haveAim = haveAim;
+		this.isClean = haveAim;
 		this.isAutomatic = isAutomatic;
 	}
 	public Integer getGunId() {
@@ -32,11 +36,12 @@ public class HandWeapon extends Weapon{
 	public void setTypeHadsWeapon(TypeHandsWeapon typeHadsWeapon) {
 		this.typeHadsWeapon = typeHadsWeapon;
 	}
-	public Boolean getHaveAim() {
-		return haveAim;
+	
+	public Boolean getIsClean() {
+		return isClean;
 	}
-	public void setHaveAim(Boolean haveAim) {
-		this.haveAim = haveAim;
+	public void setIsClean(Boolean isClean) {
+		this.isClean = isClean;
 	}
 	public Boolean getIsAutomatic() {
 		return isAutomatic;
@@ -46,7 +51,7 @@ public class HandWeapon extends Weapon{
 	}
 	@Override
 	public String toString() {
-		return "HandWeapon gunId=" + gunId + ", typeHadsWeapon=" + typeHadsWeapon + ", haveAim=" + haveAim
+		return "HandWeapon gunId=" + gunId + ", typeHadsWeapon=" + typeHadsWeapon + ", haveAim=" + isClean
 				+ ", isAutomatic=" + isAutomatic + ", Year Manufactured=" + getYearManufactured()
 				+ ", Number Of Bullets=" + getAmountOfAmmunition() + ", Weight=" + getWeight() + "kg";
 	}
@@ -55,7 +60,7 @@ public class HandWeapon extends Weapon{
 		final int prime = 31;
 		int result = super.hashCode();
 		result = prime * result + ((gunId == null) ? 0 : gunId.hashCode());
-		result = prime * result + ((haveAim == null) ? 0 : haveAim.hashCode());
+		result = prime * result + ((isClean == null) ? 0 : isClean.hashCode());
 		result = prime * result + ((isAutomatic == null) ? 0 : isAutomatic.hashCode());
 		result = prime * result + ((typeHadsWeapon == null) ? 0 : typeHadsWeapon.hashCode());
 		return result;
@@ -74,10 +79,10 @@ public class HandWeapon extends Weapon{
 				return false;
 		} else if (!gunId.equals(other.gunId))
 			return false;
-		if (haveAim == null) {
-			if (other.haveAim != null)
+		if (isClean == null) {
+			if (other.isClean != null)
 				return false;
-		} else if (!haveAim.equals(other.haveAim))
+		} else if (!isClean.equals(other.isClean))
 			return false;
 		if (isAutomatic == null) {
 			if (other.isAutomatic != null)
