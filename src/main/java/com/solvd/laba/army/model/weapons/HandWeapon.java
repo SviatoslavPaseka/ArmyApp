@@ -12,17 +12,14 @@ public class HandWeapon extends Weapon{
 	private Integer gunId;
 	private TypeHandsWeapon typeHadsWeapon;
 	private Boolean isClean;
-	private Boolean isAutomatic;
 	public HandWeapon() {
 	}
-	public HandWeapon(LocalDate yearManufactured, Integer amountOfAmmunition, 
-			Integer weight, Integer gunId,
-			TypeHandsWeapon typeHadsWeapon, Boolean haveAim, Boolean isAutomatic) {
-		super(yearManufactured, amountOfAmmunition, weight);
+	public HandWeapon(LocalDate yearManufactured, Integer gunId,
+			TypeHandsWeapon typeHadsWeapon, Boolean isClean) {
+		super(yearManufactured);
 		this.gunId = gunId;
 		this.typeHadsWeapon = typeHadsWeapon;
-		this.isClean = haveAim;
-		this.isAutomatic = isAutomatic;
+		this.isClean = isClean;
 	}
 	public Integer getGunId() {
 		return gunId;
@@ -43,17 +40,11 @@ public class HandWeapon extends Weapon{
 	public void setIsClean(Boolean isClean) {
 		this.isClean = isClean;
 	}
-	public Boolean getIsAutomatic() {
-		return isAutomatic;
-	}
-	public void setIsAutomatic(Boolean isAutomatic) {
-		this.isAutomatic = isAutomatic;
-	}
+	
 	@Override
 	public String toString() {
 		return "HandWeapon gunId=" + gunId + ", typeHadsWeapon=" + typeHadsWeapon + ", haveAim=" + isClean
-				+ ", isAutomatic=" + isAutomatic + ", Year Manufactured=" + getYearManufactured()
-				+ ", Number Of Bullets=" + getAmountOfAmmunition() + ", Weight=" + getWeight() + "kg";
+				+ ", Year Manufactured=" + getYearManufactured();
 	}
 	@Override
 	public int hashCode() {
@@ -61,7 +52,6 @@ public class HandWeapon extends Weapon{
 		int result = super.hashCode();
 		result = prime * result + ((gunId == null) ? 0 : gunId.hashCode());
 		result = prime * result + ((isClean == null) ? 0 : isClean.hashCode());
-		result = prime * result + ((isAutomatic == null) ? 0 : isAutomatic.hashCode());
 		result = prime * result + ((typeHadsWeapon == null) ? 0 : typeHadsWeapon.hashCode());
 		return result;
 	}
@@ -83,11 +73,6 @@ public class HandWeapon extends Weapon{
 			if (other.isClean != null)
 				return false;
 		} else if (!isClean.equals(other.isClean))
-			return false;
-		if (isAutomatic == null) {
-			if (other.isAutomatic != null)
-				return false;
-		} else if (!isAutomatic.equals(other.isAutomatic))
 			return false;
 		if (typeHadsWeapon != other.typeHadsWeapon)
 			return false;

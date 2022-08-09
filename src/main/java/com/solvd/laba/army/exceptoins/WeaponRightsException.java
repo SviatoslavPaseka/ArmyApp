@@ -1,6 +1,6 @@
 package com.solvd.laba.army.exceptoins;
 
-public class WeaponRightsException extends Exception{
+public class WeaponRightsException extends RuntimeException{
 
 	public WeaponRightsException() {
 		super();

@@ -2,6 +2,7 @@ package com.solvd.laba.army.model.enums;
 
 public enum MilitaryRank {
 	NONE("none"),
+	MECHANIC("mechanic"),
 	PRIVATE("private"),
 	CORPORAL("corporal"),
 	SERGEANT("sergeant"), 

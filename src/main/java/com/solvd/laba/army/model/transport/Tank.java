@@ -1,14 +1,16 @@
 package com.solvd.laba.army.model.transport;
 
+import com.solvd.laba.army.model.enums.SpecializationMilitary;
+import com.solvd.laba.army.model.enums.TypeTransportRegistration;
+
 public class Tank extends MilitaryTransport{
 	private Integer id;
-	private Boolean machineGun;//пулемет
-	
-	public Tank(String name, String model, Integer length, Integer width, Integer numberOfSeats,
-			Boolean isUnderRepaired, Boolean isArmed, Integer id, Boolean machineGun) {
-		super(name, model, length, width, numberOfSeats, isUnderRepaired, isArmed);
+
+	public Tank(String name, String model, Integer length, Integer width,
+			Boolean isUnderRepaired, TypeTransportRegistration typeTransportRegistration, Boolean isArmed, Integer id) {
+		super(name, model, length, width, isUnderRepaired, typeTransportRegistration, isArmed);
 		this.id = id;
-		this.machineGun = machineGun;
+		super.setSpecializationMilitary(SpecializationMilitary.TANKS);
 	}
 	public Integer getId() {
 		return id;
@@ -16,16 +18,12 @@ public class Tank extends MilitaryTransport{
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public Boolean getMachineGun() {
-		return machineGun;
-	}
-	public void setMachineGun(Boolean machineGun) {
-		this.machineGun = machineGun;
-	}
+	
+	
 	@Override
 	public String toString() {
-		return "Tank [id=" + id + ", machineGun=" + machineGun + ", getName()=" + getName() + ", getModel()="
-				+ getModel() + ", getNumberOfSeats()=" + getNumberOfSeats() + ", getLength()=" + getLength()
+		return "Tank [id=" + id +  ", getName()=" + getName() + ", getModel()="
+				+ getModel() + ", getLength()=" + getLength()
 				+ ", getWidth()=" + getWidth() + ", getIsUnderRepaired()=" + getIsUnderRepaired() + "]";
 	}
 	@Override
@@ -33,7 +31,6 @@ public class Tank extends MilitaryTransport{
 		final int prime = 31;
 		int result = super.hashCode();
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((machineGun == null) ? 0 : machineGun.hashCode());
 		return result;
 	}
 	@Override
@@ -49,11 +46,6 @@ public class Tank extends MilitaryTransport{
 			if (other.id != null)
 				return false;
 		} else if (!id.equals(other.id))
-			return false;
-		if (machineGun == null) {
-			if (other.machineGun != null)
-				return false;
-		} else if (!machineGun.equals(other.machineGun))
 			return false;
 		return true;
 	}

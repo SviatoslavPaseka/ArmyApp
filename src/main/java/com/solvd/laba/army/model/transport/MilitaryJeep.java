@@ -1,18 +1,21 @@
 package com.solvd.laba.army.model.transport;
 
+import com.solvd.laba.army.model.enums.SpecializationMilitary;
+import com.solvd.laba.army.model.enums.TypeTransportRegistration;
+
 public class MilitaryJeep extends MilitaryTransport{
 	private Integer id;
 	private Integer numberOfWheel;
-	
+
 	public MilitaryJeep() {
-		super();
 	}
-	
-	public MilitaryJeep(String name, String model, Integer length, Integer width, Integer numberOfSeats,
-			Boolean isUnderRepaired, Boolean isArmed, Integer id, Integer numberOfWheel) {
-		super(name, model, length, width, numberOfSeats, isUnderRepaired, isArmed);
+
+	public MilitaryJeep(String name, String model, Integer length, Integer width, Boolean isUnderRepaired,
+			TypeTransportRegistration typeTransportRegistration, Boolean isArmed, Integer id, Integer numberOfWheel) {
+		super(name, model, length, width, isUnderRepaired, typeTransportRegistration, isArmed);
 		this.id = id;
 		this.numberOfWheel = numberOfWheel;
+		super.setSpecializationMilitary(SpecializationMilitary.JEEPS);
 	}
 
 	public Integer getId() {
@@ -30,8 +33,9 @@ public class MilitaryJeep extends MilitaryTransport{
 
 	@Override
 	public String toString() {
-		return "MilitaryJeep [id=" + id + ", numberOfWheel=" + numberOfWheel + ", getName()=" + getName()
-				+ ", getModel()=" + getModel() + ", getNumberOfSeats()=" + getNumberOfSeats() + ", getLength()="
+		return "MilitaryJeep [id=" + id + ", numberOfWheel=" + numberOfWheel + 
+				", getName()=" + getName()
+				+ ", getModel()=" + getModel() + ", getLength()="
 				+ getLength() + ", getWidth()=" + getWidth() + "]";
 	}
 

@@ -1,13 +1,19 @@
-package com.solvd.laba.army.model.person;
+package com.solvd.laba.army.model.person.classes;
 
 import java.time.LocalDate;
 import java.util.List;
 
+import com.solvd.laba.army.exceptoins.NotRegisterTransportException;
+import com.solvd.laba.army.exceptoins.RepairSpecializationException;
 import com.solvd.laba.army.exceptoins.WeaponRightsException;
 import com.solvd.laba.army.model.ArmyBranch;
 import com.solvd.laba.army.model.enums.Gender;
 import com.solvd.laba.army.model.enums.MilitaryRank;
 import com.solvd.laba.army.model.enums.RecruiterRank;
+import com.solvd.laba.army.model.enums.TypeTransportRegistration;
+import com.solvd.laba.army.model.person.Person;
+import com.solvd.laba.army.model.person.interfaces.SoldierInterface;
+import com.solvd.laba.army.model.transport.Transport;
 import com.solvd.laba.army.model.weapons.HandWeapon;
 
 /*add method doRepair*/
@@ -103,7 +109,10 @@ public class Soldier extends Person implements SoldierInterface{
 	}
 
 	
-	public MilitaryRecruiter comeToRecruiterFromSoldier(Soldier soldier, Integer salary, RecruiterRank recruiterRank) {
+	public MilitaryRecruiter comeToRecruiterFromSoldier(Soldier soldier, 
+														Integer salary, 
+														RecruiterRank recruiterRank) {
+		
 		MilitaryRecruiter militaryRecruiter = new MilitaryRecruiter(getId(),
 																	getFirstname(),
 																	getLastname(),
@@ -118,6 +127,7 @@ public class Soldier extends Person implements SoldierInterface{
 	}
 	
 	public void cleanHandWeapon(Integer numberPersonalWeapon){
+		//номер зброї починається з 1
 		if (numberPersonalWeapon <= 0) {
 			System.out.println("try to enter zero and less than zero value");
 			return;
@@ -127,6 +137,30 @@ public class Soldier extends Person implements SoldierInterface{
 		} catch (IndexOutOfBoundsException e) {
 			System.out.println(e);
 			System.out.println("This soilder has " + getPersonalWeapon().size() + " weapons!");
+		}
+	}
+	
+	public void doRepairTransport(Transport transport) {
+		if (transport.getIsUnderRepaired().equals(false) && 
+			!transport.getTransportRegistration().equals(TypeTransportRegistration.NONE)) {
+			System.out.println("This transport need not repair");
+			return;
+		}
+		
+		if (transport.getTransportRegistration().equals(TypeTransportRegistration.NONE)) {
+			throw new NotRegisterTransportException("This transport does not has any regisatration");
+		}else {
+			if(getMilitaryRank().equals(MilitaryRank.MECHANIC)&&
+				getBranch().getSpecialization().contains(transport.getSpecializationMilitary())) {
+				transport.setIsUnderRepaired(false);
+			}else if (getMilitaryRank() != MilitaryRank.MECHANIC) {
+				throw new RepairSpecializationException("This soldier is not mechanic");
+			}else if(!getBranch().getSpecialization().contains(transport.getSpecializationMilitary())) {
+				throw new RepairSpecializationException
+				("This transport has " + transport.getSpecializationMilitary() +
+				" specialization but current mechanic has this specialization: " + 
+				getBranch().getSpecialization());
+			}
 		}
 	}
 }

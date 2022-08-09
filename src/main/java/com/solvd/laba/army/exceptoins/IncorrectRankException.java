@@ -1,6 +1,6 @@
 package com.solvd.laba.army.exceptoins;
 
-public class IncorrectRankException extends Exception{
+public class IncorrectRankException extends RuntimeException{
 
 	public IncorrectRankException() {
 		super();

@@ -1,31 +1,31 @@
 package com.solvd.laba.army.exceptoins;
 
-public class IncorrectDOBException extends Exception{
+public class NotRegisterTransportException extends RuntimeException{
 
-	public IncorrectDOBException() {
+	public NotRegisterTransportException() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public IncorrectDOBException(String message, Throwable cause, boolean enableSuppression,
+	public NotRegisterTransportException(String message, Throwable cause, boolean enableSuppression,
 			boolean writableStackTrace) {
 		super(message, cause, enableSuppression, writableStackTrace);
 		// TODO Auto-generated constructor stub
 	}
 
-	public IncorrectDOBException(String message, Throwable cause) {
+	public NotRegisterTransportException(String message, Throwable cause) {
 		super(message, cause);
 		// TODO Auto-generated constructor stub
 	}
 
-	public IncorrectDOBException(String message) {
+	public NotRegisterTransportException(String message) {
 		super(message);
 		// TODO Auto-generated constructor stub
 	}
 
-	public IncorrectDOBException(Throwable cause) {
+	public NotRegisterTransportException(Throwable cause) {
 		super(cause);
 		// TODO Auto-generated constructor stub
 	}
-	
+
 }

@@ -1,4 +1,4 @@
-package com.solvd.laba.army.model.person;
+package com.solvd.laba.army.model.person.classes;
 
 import java.time.LocalDate;
 
@@ -6,6 +6,8 @@ import com.solvd.laba.army.exceptoins.IncorrectRankException;
 import com.solvd.laba.army.model.enums.Gender;
 import com.solvd.laba.army.model.enums.MilitaryRank;
 import com.solvd.laba.army.model.enums.RecruiterRank;
+import com.solvd.laba.army.model.person.Person;
+import com.solvd.laba.army.model.person.interfaces.MIlitaryRecruiterInterface;
 
 public class MilitaryRecruiter extends Person implements MIlitaryRecruiterInterface{
 

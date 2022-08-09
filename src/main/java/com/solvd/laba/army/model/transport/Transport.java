@@ -1,24 +1,30 @@
 package com.solvd.laba.army.model.transport;
 
+import com.solvd.laba.army.model.enums.SpecializationMilitary;
+import com.solvd.laba.army.model.enums.TypeTransportRegistration;
+
 public abstract class Transport {
 	private String name;
 	private String model;
 	private Integer length;
 	private Integer width;
-	private Integer numberOfSeats;
 	private Boolean isUnderRepaired;
+	private TypeTransportRegistration transportRegistration = TypeTransportRegistration.NONE;
+	private SpecializationMilitary specializationMilitary;
 	
 	public Transport() {}
-	
-	public Transport(String name, String model, Integer length, Integer width, 
-					Integer numberOfSeats, Boolean isUnderRepaired) {
+
+	public Transport(String name, String model, Integer length, Integer width, Boolean isUnderRepaired,
+			TypeTransportRegistration transportRegistration) {
 		this.name = name;
 		this.model = model;
 		this.length = length;
 		this.width = width;
-		this.numberOfSeats = numberOfSeats;
 		this.isUnderRepaired = isUnderRepaired;
+		this.transportRegistration = transportRegistration;
 	}
+
+
 
 	public String getName() {
 		return name;
@@ -31,12 +37,6 @@ public abstract class Transport {
 	}
 	public void setModel(String model) {
 		this.model = model;
-	}
-	public Integer getNumberOfSeats() {
-		return numberOfSeats;
-	}
-	public void setNumberOfSeats(Integer numberOfSeats) {
-		this.numberOfSeats = numberOfSeats;
 	}
 
 	public Integer getLength() {
@@ -63,6 +63,22 @@ public abstract class Transport {
 		this.isUnderRepaired = isUnderRepaired;
 	}
 
+	public TypeTransportRegistration getTransportRegistration() {
+		return transportRegistration;
+	}
+
+	public void setTransportRegistration(TypeTransportRegistration transportRegistration) {
+		this.transportRegistration = transportRegistration;
+	}
+
+	public SpecializationMilitary getSpecializationMilitary() {
+		return specializationMilitary;
+	}
+
+	void setSpecializationMilitary(SpecializationMilitary specializationMilitary) {
+		this.specializationMilitary = specializationMilitary;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -71,7 +87,7 @@ public abstract class Transport {
 		result = prime * result + ((length == null) ? 0 : length.hashCode());
 		result = prime * result + ((model == null) ? 0 : model.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result + ((numberOfSeats == null) ? 0 : numberOfSeats.hashCode());
+		result = prime * result + ((transportRegistration == null) ? 0 : transportRegistration.hashCode());
 		result = prime * result + ((width == null) ? 0 : width.hashCode());
 		return result;
 	}
@@ -105,10 +121,7 @@ public abstract class Transport {
 				return false;
 		} else if (!name.equals(other.name))
 			return false;
-		if (numberOfSeats == null) {
-			if (other.numberOfSeats != null)
-				return false;
-		} else if (!numberOfSeats.equals(other.numberOfSeats))
+		if (transportRegistration != other.transportRegistration)
 			return false;
 		if (width == null) {
 			if (other.width != null)
@@ -117,7 +130,4 @@ public abstract class Transport {
 			return false;
 		return true;
 	}
-
-	
-	
 }
