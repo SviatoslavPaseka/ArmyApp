@@ -3,6 +3,7 @@ package com.solvd.laba.army.model.person.classes;
 import java.time.LocalDate;
 
 import com.solvd.laba.army.exceptoins.IncorrectRankException;
+import com.solvd.laba.army.exceptoins.NegativeNumberException;
 import com.solvd.laba.army.model.enums.Gender;
 import com.solvd.laba.army.model.enums.MilitaryRank;
 import com.solvd.laba.army.model.enums.RecruiterRank;
@@ -55,7 +56,9 @@ public class MilitaryRecruiter extends Person implements MIlitaryRecruiterInterf
 		return salary;
 	}
 	public void setSalary(Integer salary) {
-		this.salary = salary;
+		if (salary < 0) {
+			throw new NegativeNumberException("Salary cannot be less than 0");
+		}else this.salary = salary;
 	}
 	public MilitaryRank getMilitaryRank() {
 		return militaryRank;

@@ -2,6 +2,8 @@ package com.solvd.laba.army.model.weapons;
 
 import java.time.LocalDate;
 
+import com.solvd.laba.army.exceptoins.NegativeNumberException;
+
 public class WeaponToMassDestruction extends Weapon{
 	private Integer id;
 	private Integer radiusOfEffect;
@@ -24,7 +26,9 @@ public class WeaponToMassDestruction extends Weapon{
 		return radiusOfEffect;
 	}
 	public void setRadiusOfEffect(Integer radiusOfEffect) {
-		this.radiusOfEffect = radiusOfEffect;
+		if (radiusOfEffect < 0) {
+			throw new NegativeNumberException("Radius cannot be less than 0");
+		}else this.radiusOfEffect = radiusOfEffect;
 	}
 	@Override
 	public String toString() {

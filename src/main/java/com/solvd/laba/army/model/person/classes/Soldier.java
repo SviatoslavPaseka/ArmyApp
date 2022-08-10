@@ -3,6 +3,8 @@ package com.solvd.laba.army.model.person.classes;
 import java.time.LocalDate;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import com.solvd.laba.army.exceptoins.NotRegisterTransportException;
 import com.solvd.laba.army.exceptoins.RepairSpecializationException;
 import com.solvd.laba.army.exceptoins.WeaponRightsException;
@@ -15,20 +17,15 @@ import com.solvd.laba.army.model.person.Person;
 import com.solvd.laba.army.model.person.interfaces.SoldierInterface;
 import com.solvd.laba.army.model.transport.Transport;
 import com.solvd.laba.army.model.weapons.HandWeapon;
-
-/*add method doRepair*/
-/*
- * пройти/провести медичний огляд 
- */
  
 public class Soldier extends Person implements SoldierInterface{
+	final Logger log = Logger.getLogger(Soldier.class);
 	private MilitaryRank militaryRank;
 	private ArmyBranch branch;
 	private List<HandWeapon> personalWeapon;
 	
 	public Soldier() {
 	}
-
 	public Soldier(Integer id, String firstname, String lastname, Gender gender, LocalDate dob, 
 				   MilitaryRank militaryRank,	ArmyBranch branch, List<HandWeapon> personalWeapon,
 				   Boolean haveMedicalExamination) {
@@ -37,7 +34,6 @@ public class Soldier extends Person implements SoldierInterface{
 		this.branch = branch;
 		this.personalWeapon = personalWeapon;
 	}
-
 	public MilitaryRank getMilitaryRank() {
 		return militaryRank;
 	}
@@ -73,7 +69,6 @@ public class Soldier extends Person implements SoldierInterface{
 				", \nmilitary branch:" + branch + 
 				", \npersonal weapon:" + personalWeapon;
 	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -83,7 +78,6 @@ public class Soldier extends Person implements SoldierInterface{
 		result = prime * result + ((personalWeapon == null) ? 0 : personalWeapon.hashCode());
 		return result;
 	}
-
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -107,8 +101,6 @@ public class Soldier extends Person implements SoldierInterface{
 			return false;
 		return true;
 	}
-
-	
 	public MilitaryRecruiter comeToRecruiterFromSoldier(Soldier soldier, 
 														Integer salary, 
 														RecruiterRank recruiterRank) {
@@ -125,21 +117,20 @@ public class Soldier extends Person implements SoldierInterface{
 		
 		return militaryRecruiter;
 	}
-	
 	public void cleanHandWeapon(Integer numberPersonalWeapon){
 		//номер зброї починається з 1
 		if (numberPersonalWeapon <= 0) {
-			System.out.println("try to enter zero and less than zero value");
+			log.info("try to enter zero and less than zero value");
 			return;
 		}
 		try {
 			getPersonalWeapon().get(numberPersonalWeapon - 1).setIsClean(true);
 		} catch (IndexOutOfBoundsException e) {
-			System.out.println(e);
-			System.out.println("This soilder has " + getPersonalWeapon().size() + " weapons!");
+			log.warn(e);
+			
+			log.info("This soilder has " + getPersonalWeapon().size() + " weapons!");
 		}
 	}
-	
 	public void doRepairTransport(Transport transport) {
 		if (transport.getIsUnderRepaired().equals(false) && 
 			!transport.getTransportRegistration().equals(TypeTransportRegistration.NONE)) {

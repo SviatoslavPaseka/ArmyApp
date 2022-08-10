@@ -1,5 +1,6 @@
 package com.solvd.laba.army.model.transport;
 
+import com.solvd.laba.army.exceptoins.NegativeNumberException;
 import com.solvd.laba.army.model.enums.SpecializationMilitary;
 import com.solvd.laba.army.model.enums.TypeTransportRegistration;
 
@@ -28,7 +29,9 @@ public class MilitaryJeep extends MilitaryTransport{
 		return numberOfWheel;
 	}
 	public void setNumberOfWheel(Integer numberOfWheel) {
-		this.numberOfWheel = numberOfWheel;
+		if (numberOfWheel < 4) {
+			throw new NegativeNumberException("Numberof wheel cannot be less than 4");
+		}else this.numberOfWheel = numberOfWheel;
 	}
 
 	@Override

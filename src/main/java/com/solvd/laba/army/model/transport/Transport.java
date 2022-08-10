@@ -1,5 +1,6 @@
 package com.solvd.laba.army.model.transport;
 
+import com.solvd.laba.army.exceptoins.NegativeNumberException;
 import com.solvd.laba.army.model.enums.SpecializationMilitary;
 import com.solvd.laba.army.model.enums.TypeTransportRegistration;
 
@@ -44,7 +45,9 @@ public abstract class Transport {
 	}
 
 	public void setLength(Integer length) {
-		this.length = length;
+		if (length < 0) {
+			throw new NegativeNumberException("Length cannot be less than 0");
+		}else this.length = length;
 	}
 
 	public Integer getWidth() {
@@ -52,7 +55,9 @@ public abstract class Transport {
 	}
 
 	public void setWidth(Integer width) {
-		this.width = width;
+		if (width < 0) {
+			throw new NegativeNumberException("width cannot be less than 0");
+		}else this.width = width;;
 	}
 
 	public Boolean getIsUnderRepaired() {

@@ -2,6 +2,7 @@ package com.solvd.laba.army.model.person.classes;
 
 import java.time.LocalDate;
 
+import com.solvd.laba.army.exceptoins.NegativeNumberException;
 import com.solvd.laba.army.model.enums.Gender;
 import com.solvd.laba.army.model.enums.RegistratorHierarchy;
 import com.solvd.laba.army.model.enums.TypeTransportRegistration;
@@ -27,7 +28,9 @@ public class Registrator extends Person implements RegistratorInterface{
 	}
 
 	public void setNumberRegistration(Integer numberRegistration) {
-		this.numberRegistration = numberRegistration;
+		if (numberRegistration < 0) {
+			throw new NegativeNumberException("Trying to enter negative number");
+		}else this.numberRegistration = numberRegistration;
 	}
 
 	public RegistratorHierarchy getRegistratorHierarchy() {
