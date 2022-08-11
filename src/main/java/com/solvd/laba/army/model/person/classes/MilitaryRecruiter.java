@@ -1,29 +1,38 @@
 package com.solvd.laba.army.model.person.classes;
 
 import java.time.LocalDate;
+import java.util.List;
+
+import org.apache.log4j.Logger;
 
 import com.solvd.laba.army.exceptoins.IncorrectRankException;
 import com.solvd.laba.army.exceptoins.NegativeNumberException;
 import com.solvd.laba.army.model.enums.Gender;
 import com.solvd.laba.army.model.enums.MilitaryRank;
 import com.solvd.laba.army.model.enums.RecruiterRank;
+import com.solvd.laba.army.model.enums.SpecializationMilitary;
 import com.solvd.laba.army.model.person.Person;
-import com.solvd.laba.army.model.person.interfaces.MIlitaryRecruiterInterface;
+import com.solvd.laba.army.model.person.interfaces.MIlitaryRecruiterService;
+import com.solvd.laba.army.model.weapons.HandWeapon;
 
-public class MilitaryRecruiter extends Person implements MIlitaryRecruiterInterface{
+public class MilitaryRecruiter extends Person implements MIlitaryRecruiterService{
 
+	private static final Logger log = Logger.getLogger(MilitaryRecruiter.class);
+	
 	private RecruiterRank recruiterRank;
 	private Integer salary;
 	private MilitaryRank militaryRank = MilitaryRank.NONE;
 	
 	public MilitaryRecruiter() {
 	}
-	public MilitaryRecruiter(Integer id, String firstname, String lastname, Gender gender, LocalDate dob,
-			RecruiterRank recruiterRank, Integer salary, Boolean haveMedicalExamination) {
-		super(id, firstname, lastname, gender, dob, haveMedicalExamination);
-		this.recruiterRank = recruiterRank;
+	
+	public MilitaryRecruiter(Integer id, String name, Gender gender, LocalDate dob, 
+						Boolean haveMedicalExamination, Integer salary, MilitaryRank militaryRank) {
+		super(id, name, gender, dob, haveMedicalExamination);
 		this.salary = salary;
+		this.militaryRank = militaryRank;
 	}
+
 	public RecruiterRank getRecruiterRank() {
 		return recruiterRank;
 	}
@@ -67,6 +76,42 @@ public class MilitaryRecruiter extends Person implements MIlitaryRecruiterInterf
 		this.militaryRank = militaryRank;
 	}
 	
+	@Override
+	public String toString() {
+		return "MilitaryRecruiter [recruiterRank=" + recruiterRank + ", salary=" + salary + ", militaryRank="
+				+ militaryRank + ", getId()=" + getId() + ", getName()=" + getName() + ", getGender()=" + getGender()
+				+ ", Dob=" + getDob();
+	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + ((militaryRank == null) ? 0 : militaryRank.hashCode());
+		result = prime * result + ((recruiterRank == null) ? 0 : recruiterRank.hashCode());
+		result = prime * result + ((salary == null) ? 0 : salary.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		MilitaryRecruiter other = (MilitaryRecruiter) obj;
+		if (militaryRank != other.militaryRank)
+			return false;
+		if (recruiterRank != other.recruiterRank)
+			return false;
+		if (salary == null) {
+			if (other.salary != null)
+				return false;
+		} else if (!salary.equals(other.salary))
+			return false;
+		return true;
+	}
+
 	public void medicalExamination(Person person, RecruiterRank recruiterRank) {
 		if (recruiterRank == RecruiterRank.MILITARY_DOCTOR) {
 			person.setHaveMedicalExamination(true);
@@ -74,4 +119,25 @@ public class MilitaryRecruiter extends Person implements MIlitaryRecruiterInterf
 			System.out.println("you are not a doctor");
 		}
 	}
+
+	@Override
+	public Soldier summonSoldier(Person person, MilitaryRank militaryRank, SpecializationMilitary specializationMilitary, List<HandWeapon> personalWeapons) {
+		
+		if (person.getDob().getYear() + 18 > LocalDate.now().getYear() ||
+			person.getDob().getYear() + 60 <= LocalDate.now().getYear()) {
+			log.warn("This person can not be summon to army");
+			return null;
+		}
+		
+		return new Soldier(person.getId(),
+							person.getName(),
+							person.getGender(),
+							person.getDob(),
+							person.getHaveMedicalExamination(),
+							militaryRank,
+							specializationMilitary,
+							personalWeapons);
+	}
+	
+	
 }

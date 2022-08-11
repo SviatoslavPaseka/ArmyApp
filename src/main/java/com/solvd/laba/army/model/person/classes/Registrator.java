@@ -7,19 +7,18 @@ import com.solvd.laba.army.model.enums.Gender;
 import com.solvd.laba.army.model.enums.RegistratorHierarchy;
 import com.solvd.laba.army.model.enums.TypeTransportRegistration;
 import com.solvd.laba.army.model.person.Person;
-import com.solvd.laba.army.model.person.interfaces.RegistratorInterface;
+import com.solvd.laba.army.model.person.interfaces.RegistratorService;
 import com.solvd.laba.army.model.transport.Transport;
 
-public class Registrator extends Person implements RegistratorInterface{
+public class Registrator extends Person implements RegistratorService{
 	private Integer numberRegistration = 0;
 	private RegistratorHierarchy registratorHierarchy = RegistratorHierarchy.ZERO;
 	
 	public Registrator() {
 	}
-
-	public Registrator(Integer id, String firstname, String lastname, Gender gender, LocalDate dob,
+	public Registrator(Integer id, String name, Gender gender, LocalDate dob,
 			Boolean haveMedicalExamination, Integer numberRegistration) {
-		super(id, firstname, lastname, gender, dob, haveMedicalExamination);
+		super(id, name, gender, dob, haveMedicalExamination);
 		this.numberRegistration = numberRegistration;
 	}
 
@@ -54,6 +53,6 @@ public class Registrator extends Person implements RegistratorInterface{
 	}
 
 	public Integer getSalaryRegistrator() {
-		return this.registratorHierarchy.getSalary();
+		return getRegistratorHierarchy().getSalary();
 	}
 }

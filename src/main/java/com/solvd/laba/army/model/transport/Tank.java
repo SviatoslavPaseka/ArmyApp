@@ -6,9 +6,9 @@ import com.solvd.laba.army.model.enums.TypeTransportRegistration;
 public class Tank extends MilitaryTransport{
 	private Integer id;
 
-	public Tank(String name, String model, Integer length, Integer width,
+	public Tank(String name, Integer length, Integer width,
 			Boolean isUnderRepaired, TypeTransportRegistration typeTransportRegistration, Boolean isArmed, Integer id) {
-		super(name, model, length, width, isUnderRepaired, typeTransportRegistration, isArmed);
+		super(name, length, width, isUnderRepaired, typeTransportRegistration, isArmed);
 		this.id = id;
 		super.setSpecializationMilitary(SpecializationMilitary.TANKS);
 	}
@@ -22,8 +22,7 @@ public class Tank extends MilitaryTransport{
 	
 	@Override
 	public String toString() {
-		return "Tank [id=" + id +  ", getName()=" + getName() + ", getModel()="
-				+ getModel() + ", getLength()=" + getLength()
+		return "Tank [id=" + id +  ", getName()=" + getName() + ", getLength()=" + getLength()
 				+ ", getWidth()=" + getWidth() + ", getIsUnderRepaired()=" + getIsUnderRepaired() + "]";
 	}
 	@Override

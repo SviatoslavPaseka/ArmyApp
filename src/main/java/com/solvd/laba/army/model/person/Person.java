@@ -7,20 +7,18 @@ import com.solvd.laba.army.model.enums.Gender;
 
 public abstract class Person {
 	private Integer id; // UUID is better
-	private String firstname;
-	private String lastname;
+	private String name;
 	private Gender gender;
 	private LocalDate dob;
 	private Boolean haveMedicalExamination;//чи встановлена пригодність для військової служби
-
+	
 	public Person() {
 	}
 
-	public Person(Integer id, String firstname, String lastname, Gender gender, LocalDate dob,
-			Boolean haveMedicalExamination) {
+	public Person(Integer id, String name, Gender gender, LocalDate dob, Boolean haveMedicalExamination) {
+		super();
 		this.id = id;
-		this.firstname = firstname;
-		this.lastname = lastname;
+		this.name = name;
 		this.gender = gender;
 		this.dob = dob;
 		this.haveMedicalExamination = haveMedicalExamination;
@@ -32,18 +30,15 @@ public abstract class Person {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public String getFirstname() {
-		return firstname;
+	
+	public String getName() {
+		return name;
 	}
-	public void setFirstname(String firstname) {
-		this.firstname = firstname;
+
+	public void setName(String name) {
+		this.name = name;
 	}
-	public String getLastname() {
-		return lastname;
-	}
-	public void setLastname(String lastname) {
-		this.lastname = lastname;
-	}
+
 	public Gender getGender() {
 		return gender;
 	}
@@ -67,16 +62,17 @@ public abstract class Person {
 	public void setHaveMedicalExamination(Boolean haveMedicalExamination) {
 		this.haveMedicalExamination = haveMedicalExamination;
 	}
+	
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((dob == null) ? 0 : dob.hashCode());
-		result = prime * result + ((firstname == null) ? 0 : firstname.hashCode());
 		result = prime * result + ((gender == null) ? 0 : gender.hashCode());
+		result = prime * result + ((haveMedicalExamination == null) ? 0 : haveMedicalExamination.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((lastname == null) ? 0 : lastname.hashCode());
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		return result;
 	}
 
@@ -94,23 +90,25 @@ public abstract class Person {
 				return false;
 		} else if (!dob.equals(other.dob))
 			return false;
-		if (firstname == null) {
-			if (other.firstname != null)
-				return false;
-		} else if (!firstname.equals(other.firstname))
-			return false;
 		if (gender != other.gender)
+			return false;
+		if (haveMedicalExamination == null) {
+			if (other.haveMedicalExamination != null)
+				return false;
+		} else if (!haveMedicalExamination.equals(other.haveMedicalExamination))
 			return false;
 		if (id == null) {
 			if (other.id != null)
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
-		if (lastname == null) {
-			if (other.lastname != null)
+		if (name == null) {
+			if (other.name != null)
 				return false;
-		} else if (!lastname.equals(other.lastname))
+		} else if (!name.equals(other.name))
 			return false;
 		return true;
 	}
+
+	
 }

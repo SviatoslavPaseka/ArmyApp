@@ -5,10 +5,10 @@ import com.solvd.laba.army.model.enums.TypeTransportRegistration;
 public abstract class MilitaryTransport extends Transport {
 	private Boolean isArmed;
 
-	public MilitaryTransport(String name, String model, Integer length, Integer width,
+	public MilitaryTransport(String name, Integer length, Integer width,
 			Boolean isUnderRepaired, TypeTransportRegistration typeTransportRegistration,
 			Boolean isArmed) {
-		super(name, model, length, width, isUnderRepaired, typeTransportRegistration);
+		super(name, length, width, isUnderRepaired, typeTransportRegistration);
 		this.isArmed = isArmed;
 	}
 

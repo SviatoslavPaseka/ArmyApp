@@ -1,10 +1,10 @@
 package com.solvd.laba.army;
 
 import java.time.LocalDate;
-import java.time.Month;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.log4j.Logger;
 
@@ -24,17 +24,21 @@ public class ArmyApplication {
 	private static final Logger log = Logger.getLogger(ArmyApplication.class);
 	public static void main(String[] args) {
 		List<HandWeapon> personalWeapons = new ArrayList<HandWeapon>();
-		HandWeapon handWeapon1 = new HandWeapon(LocalDate.of(2000, Month.MARCH, 11), 1015, 
-												TypeHandsWeapon.PISTOL, false);
-		personalWeapons.add(handWeapon1);
+		for (int i = 0; i < 1; i++) {
+			personalWeapons.add(new HandWeapon(LocalDate.of(1990 + i, 1, 10),
+								1000 + i, TypeHandsWeapon.PISTOL, false));
+		}
+		
 		List<SpecializationMilitary> specializationMilitaries = 
 				Arrays.asList(SpecializationMilitary.FLYING);
-		ArmyBranch armyBranch1 = new ArmyBranch(1, "Name1", "Ukraine", 20, specializationMilitaries);
 		
-		Soldier soldier1 = new Soldier(1, "Sam", "Sam", Gender.MALE, 
-				LocalDate.of(2000, 10, 10), MilitaryRank.MECHANIC, armyBranch1, personalWeapons, true);
-		
-		Tank tank1 = new Tank("T", "-72", 10, 3, true, TypeTransportRegistration.NONE, true, 1);
+				
+		Soldier soldier1 = new Soldier(1, "Sam", Gender.MALE, 
+										LocalDate.of(2000, 10, 10), true, MilitaryRank.MECHANIC, 
+										SpecializationMilitary.FLYING, personalWeapons);
+		ArmyBranch<Soldier> armyBranch1 = new ArmyBranch<Soldier>(1, "Kiev", Arrays.asList(soldier1), specializationMilitaries);//
+
+		Tank tank1 = new Tank("T-72", 10, 3, true, TypeTransportRegistration.NONE, true, 1);
 		
 		try {
 			soldier1.doRepairTransport(tank1);
@@ -43,7 +47,10 @@ public class ArmyApplication {
 		} catch(NotRegisterTransportException ex) {
 			log.info(ex);
 		}
-		
+		for (Map.Entry<Integer, TypeHandsWeapon> item : soldier1.getAllHandWeaponByIdAndType().entrySet()) {
+			System.out.println("Id: " + item.getKey() + ", type: " + item.getValue().getValue());
+		}
+		System.out.println(armyBranch1.getSomethgThere());
 	}
 
 }

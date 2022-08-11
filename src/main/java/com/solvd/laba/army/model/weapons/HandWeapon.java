@@ -43,7 +43,7 @@ public class HandWeapon extends Weapon{
 	
 	@Override
 	public String toString() {
-		return "HandWeapon gunId=" + gunId + ", typeHadsWeapon=" + typeHadsWeapon + ", haveAim=" + isClean
+		return "HandWeapon gunId=" + gunId + ", typeHadsWeapon=" + typeHadsWeapon + ", is clean=" + isClean
 				+ ", Year Manufactured=" + getYearManufactured();
 	}
 	@Override

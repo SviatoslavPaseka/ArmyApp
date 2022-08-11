@@ -9,9 +9,9 @@ public class AirPlane extends Transport{
 	public AirPlane() {
 	}
 	
-	public AirPlane(String name, String model, Integer length, Integer width, Boolean isUnderRepaired,
+	public AirPlane(String name, Integer length, Integer width, Boolean isUnderRepaired,
 			TypeTransportRegistration transportRegistration, Integer id, Boolean isPassenger) {
-		super(name, model, length, width, isUnderRepaired, transportRegistration);
+		super(name, length, width, isUnderRepaired, transportRegistration);
 		this.id = id;
 		this.isPassenger = isPassenger;
 		super.setSpecializationMilitary(SpecializationMilitary.FLYING);
@@ -33,7 +33,7 @@ public class AirPlane extends Transport{
 	@Override
 	public String toString() {
 		return "AirPlane [id=" + id + ", isPassenger=" + isPassenger 
-				+ ", getName()="+ getName() + ", getModel()=" + getModel()	+ 
+				+ ", getName()="+ getName() + 
 				", getLength()=" + getLength() + ", getWidth()=" + getWidth() + "]";
 	}
 

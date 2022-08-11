@@ -11,9 +11,9 @@ public class MilitaryJeep extends MilitaryTransport{
 	public MilitaryJeep() {
 	}
 
-	public MilitaryJeep(String name, String model, Integer length, Integer width, Boolean isUnderRepaired,
+	public MilitaryJeep(String name, Integer length, Integer width, Boolean isUnderRepaired,
 			TypeTransportRegistration typeTransportRegistration, Boolean isArmed, Integer id, Integer numberOfWheel) {
-		super(name, model, length, width, isUnderRepaired, typeTransportRegistration, isArmed);
+		super(name, length, width, isUnderRepaired, typeTransportRegistration, isArmed);
 		this.id = id;
 		this.numberOfWheel = numberOfWheel;
 		super.setSpecializationMilitary(SpecializationMilitary.JEEPS);
@@ -38,8 +38,7 @@ public class MilitaryJeep extends MilitaryTransport{
 	public String toString() {
 		return "MilitaryJeep [id=" + id + ", numberOfWheel=" + numberOfWheel + 
 				", getName()=" + getName()
-				+ ", getModel()=" + getModel() + ", getLength()="
-				+ getLength() + ", getWidth()=" + getWidth() + "]";
+				+ ", getLength()=" + getLength() + ", getWidth()=" + getWidth() + "]";
 	}
 
 	@Override

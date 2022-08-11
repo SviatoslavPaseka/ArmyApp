@@ -6,7 +6,6 @@ import com.solvd.laba.army.model.enums.TypeTransportRegistration;
 
 public abstract class Transport {
 	private String name;
-	private String model;
 	private Integer length;
 	private Integer width;
 	private Boolean isUnderRepaired;
@@ -15,10 +14,9 @@ public abstract class Transport {
 	
 	public Transport() {}
 
-	public Transport(String name, String model, Integer length, Integer width, Boolean isUnderRepaired,
+	public Transport(String name, Integer length, Integer width, Boolean isUnderRepaired,
 			TypeTransportRegistration transportRegistration) {
 		this.name = name;
-		this.model = model;
 		this.length = length;
 		this.width = width;
 		this.isUnderRepaired = isUnderRepaired;
@@ -32,12 +30,6 @@ public abstract class Transport {
 	}
 	public void setName(String name) {
 		this.name = name;
-	}
-	public String getModel() {
-		return model;
-	}
-	public void setModel(String model) {
-		this.model = model;
 	}
 
 	public Integer getLength() {
@@ -90,7 +82,6 @@ public abstract class Transport {
 		int result = 1;
 		result = prime * result + ((isUnderRepaired == null) ? 0 : isUnderRepaired.hashCode());
 		result = prime * result + ((length == null) ? 0 : length.hashCode());
-		result = prime * result + ((model == null) ? 0 : model.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((transportRegistration == null) ? 0 : transportRegistration.hashCode());
 		result = prime * result + ((width == null) ? 0 : width.hashCode());
@@ -115,11 +106,6 @@ public abstract class Transport {
 			if (other.length != null)
 				return false;
 		} else if (!length.equals(other.length))
-			return false;
-		if (model == null) {
-			if (other.model != null)
-				return false;
-		} else if (!model.equals(other.model))
 			return false;
 		if (name == null) {
 			if (other.name != null)
