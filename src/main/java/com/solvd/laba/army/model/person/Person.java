@@ -6,7 +6,7 @@ import com.solvd.laba.army.exceptoins.IncorrectYearException;
 import com.solvd.laba.army.model.enums.Gender;
 
 public abstract class Person {
-	private Integer id; // UUID is better
+	private Integer id; 
 	private String name;
 	private Gender gender;
 	private LocalDate dob;
@@ -16,7 +16,6 @@ public abstract class Person {
 	}
 
 	public Person(Integer id, String name, Gender gender, LocalDate dob, Boolean haveMedicalExamination) {
-		super();
 		this.id = id;
 		this.name = name;
 		this.gender = gender;

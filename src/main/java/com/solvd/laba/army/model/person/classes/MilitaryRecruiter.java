@@ -2,6 +2,7 @@ package com.solvd.laba.army.model.person.classes;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.apache.log4j.Logger;
 
@@ -17,7 +18,7 @@ import com.solvd.laba.army.model.weapons.HandWeapon;
 
 public class MilitaryRecruiter extends Person implements MIlitaryRecruiterService{
 
-	private static final Logger log = Logger.getLogger(MilitaryRecruiter.class);
+	private static final Logger LOGGER = Logger.getLogger(MilitaryRecruiter.class);
 	
 	private RecruiterRank recruiterRank;
 	private Integer salary;
@@ -38,19 +39,6 @@ public class MilitaryRecruiter extends Person implements MIlitaryRecruiterServic
 	}
 	public void setRecruiterRank(RecruiterRank recruiterRank) throws IncorrectRankException {
 		
-		
-		/*якщо намагатися для працівника воєнкоммату
-		з військовим рангом GENERAL або GENERAL_OF_ARMY 
-		встановити якусь іншу посаду окрім OFFICE_HEAD
-		- автоматично буде встановлена посада OFFICE_HEAD*/
-//		if ( getMilitaryRank() == MilitaryRank.GENERAL || getMilitaryRank() == MilitaryRank.GENERAL_OF_ARMY) {
-//			this.recruiterRank = RecruiterRank.OFFICE_HEAD;
-//			return;
-//		}
-		/*якщо намагатися для працівника воєнкоммату
-		з військовим рангом GENERAL або GENERAL_OF_ARMY 
-		встановити якусь іншу посаду окрім OFFICE_HEAD
-		- вкине IncorrectRankException*/
 		if (recruiterRank != RecruiterRank.OFFICE_HEAD && 
 			(getMilitaryRank() == MilitaryRank.GENERAL || 
 			getMilitaryRank() == MilitaryRank.GENERAL_OF_ARMY)) {
@@ -116,7 +104,7 @@ public class MilitaryRecruiter extends Person implements MIlitaryRecruiterServic
 		if (recruiterRank == RecruiterRank.MILITARY_DOCTOR) {
 			person.setHaveMedicalExamination(true);
 		}else {
-			System.out.println("you are not a doctor");
+			LOGGER.info("you are not a doctor");
 		}
 	}
 
@@ -125,10 +113,9 @@ public class MilitaryRecruiter extends Person implements MIlitaryRecruiterServic
 		
 		if (person.getDob().getYear() + 18 > LocalDate.now().getYear() ||
 			person.getDob().getYear() + 60 <= LocalDate.now().getYear()) {
-			log.warn("This person can not be summon to army");
+			LOGGER.warn("This person can not be summon to army");
 			return null;
 		}
-		
 		return new Soldier(person.getId(),
 							person.getName(),
 							person.getGender(),
@@ -137,6 +124,16 @@ public class MilitaryRecruiter extends Person implements MIlitaryRecruiterServic
 							militaryRank,
 							specializationMilitary,
 							personalWeapons);
+	}
+
+	@Override
+	public List<NotMilitaryPerson> getFitPeople(List<NotMilitaryPerson> allPeople) {
+		
+		LOGGER.info("Receivind list of fit people");
+		return allPeople.stream()
+					.filter(e -> e.getDob().getYear() < LocalDate.now().getYear() - 18)
+					.filter(i -> i.getHaveMedicalExamination())
+					.collect(Collectors.toList());
 	}
 	
 	

@@ -3,22 +3,20 @@ package com.solvd.laba.army.model;
 import java.util.List;
 
 import com.solvd.laba.army.model.enums.SpecializationMilitary;
-import com.solvd.laba.army.model.person.Person;
+import com.solvd.laba.army.model.transport.Transport;
 
-public class ArmyBranch<T> {
+public class ArmyBranch<T extends Transport> {
 	private Integer id;
 	private String name;
-	private List<T> somethgThere;
-	private List<SpecializationMilitary> specialization;
+	private List<T> transportInThisBranch;
 	
 	public ArmyBranch() {
 	}
-	public ArmyBranch(Integer id, String name, List<T> somethgThere, List<SpecializationMilitary> specialization) {
-		super();
+	public ArmyBranch(Integer id, String name, List<SpecializationMilitary> specialization,
+			List<T> transportInThisBranch) {
 		this.id = id;
 		this.name = name;
-		this.somethgThere = somethgThere;
-		this.specialization = specialization;
+		this.transportInThisBranch = transportInThisBranch;
 	}
 
 	public Integer getId() {
@@ -33,28 +31,22 @@ public class ArmyBranch<T> {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public List<SpecializationMilitary> getSpecialization() {
-		return specialization;
+	public List<T> getTransportInThisBranch() {
+		return transportInThisBranch;
 	}
-	public void setSpecialization(List<SpecializationMilitary> specialization) {
-		this.specialization = specialization;
+	public void setTransportInThisBranch(List<T> transportInThisBranch) {
+		this.transportInThisBranch = transportInThisBranch;
 	}
-	public List<T> getSomethgThere() {
-		return somethgThere;
-	}
-	public void setSomethgThere(List<T> somethgThere) {
-		this.somethgThere = somethgThere;
-	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result + ((somethgThere == null) ? 0 : somethgThere.hashCode());
-		result = prime * result + ((specialization == null) ? 0 : specialization.hashCode());
 		return result;
 	}
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -74,27 +66,12 @@ public class ArmyBranch<T> {
 				return false;
 		} else if (!name.equals(other.name))
 			return false;
-		if (somethgThere == null) {
-			if (other.somethgThere != null)
-				return false;
-		} else if (!somethgThere.equals(other.somethgThere))
-			return false;
-		if (specialization == null) {
-			if (other.specialization != null)
-				return false;
-		} else if (!specialization.equals(other.specialization))
-			return false;
 		return true;
 	}
 	@Override
 	public String toString() {
-		return "Army branch id=" + id + ", name=" + name + 
-				", people there=" + somethgThere	+ ", mainSpecialization=" + specialization;
+		return "ArmyBranch [id=" + id + ", name=" + name + 
+				", transportInThisBranch=" + transportInThisBranch + "]";
 	}
 	
-	public T findPersonById(Integer id) {
-		return somethgThere.stream()
-						.filter(e -> ((Person) e).getId().equals(id))
-						.findAny().orElse(null);
-	}
 }

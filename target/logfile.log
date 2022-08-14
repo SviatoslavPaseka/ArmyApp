@@ -1,14 +1,6 @@
-2022-08-10 13:29:14 INFO  ArmyApplication:44 - com.solvd.laba.army.exceptoins.NotRegisterTransportException: This transport does not has any regisatration
-2022-08-11 21:53:47 INFO  ArmyApplication:45 - com.solvd.laba.army.exceptoins.NotRegisterTransportException: This transport does not has any regisatration
-2022-08-11 21:55:12 INFO  ArmyApplication:45 - com.solvd.laba.army.exceptoins.NotRegisterTransportException: This transport does not has any regisatration
-2022-08-11 21:59:03 INFO  ArmyApplication:49 - com.solvd.laba.army.exceptoins.NotRegisterTransportException: This transport does not has any regisatration
-2022-08-11 22:02:12 INFO  ArmyApplication:49 - com.solvd.laba.army.exceptoins.NotRegisterTransportException: This transport does not has any regisatration
-2022-08-11 22:02:43 INFO  ArmyApplication:49 - com.solvd.laba.army.exceptoins.NotRegisterTransportException: This transport does not has any regisatration
-2022-08-11 22:03:15 INFO  ArmyApplication:49 - com.solvd.laba.army.exceptoins.NotRegisterTransportException: This transport does not has any regisatration
-2022-08-12 00:06:03 INFO  ArmyApplication:47 - com.solvd.laba.army.exceptoins.NotRegisterTransportException: This transport does not has any regisatration
-2022-08-12 00:06:04 INFO  ArmyApplication:47 - com.solvd.laba.army.exceptoins.NotRegisterTransportException: This transport does not has any regisatration
-2022-08-12 00:07:08 INFO  ArmyApplication:47 - com.solvd.laba.army.exceptoins.NotRegisterTransportException: This transport does not has any regisatration
-2022-08-12 00:07:44 INFO  ArmyApplication:47 - com.solvd.laba.army.exceptoins.NotRegisterTransportException: This transport does not has any regisatration
-2022-08-12 00:08:03 INFO  ArmyApplication:47 - com.solvd.laba.army.exceptoins.NotRegisterTransportException: This transport does not has any regisatration
-2022-08-12 00:08:37 INFO  ArmyApplication:47 - com.solvd.laba.army.exceptoins.NotRegisterTransportException: This transport does not has any regisatration
-2022-08-12 00:34:45 INFO  ArmyApplication:48 - com.solvd.laba.army.exceptoins.NotRegisterTransportException: This transport does not has any regisatration
+2022-08-14 19:54:14 INFO  MilitaryRecruiter:132 - Receivind list of fit people
+2022-08-14 19:54:14 INFO  ArmyApplication:24 - [NotMilitaryPerson [getId()=2, getName()=Dima, getGender()=MALE, getDob()=2000-01-01, getHaveMedicalExamination()=true]]
+2022-08-14 19:54:22 INFO  MilitaryRecruiter:132 - Receivind list of fit people
+2022-08-14 19:54:22 INFO  ArmyApplication:24 - [NotMilitaryPerson [getId()=2, getName()=Dima, getGender()=MALE, getDob()=2000-01-01, getHaveMedicalExamination()=true]]
+2022-08-14 19:54:43 INFO  MilitaryRecruiter:132 - Receivind list of fit people
+2022-08-14 19:54:43 INFO  ArmyApplication:24 - [NotMilitaryPerson [getId()=2, getName()=Dima, getGender()=MALE, getDob()=2000-01-01, getHaveMedicalExamination()=true]]

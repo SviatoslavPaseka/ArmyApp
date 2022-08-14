@@ -4,14 +4,14 @@ import com.solvd.laba.army.exceptoins.NegativeNumberException;
 import com.solvd.laba.army.model.enums.SpecializationMilitary;
 import com.solvd.laba.army.model.enums.TypeTransportRegistration;
 
-public class MilitaryJeep extends MilitaryTransport{
+public class MilitaryWheels extends MilitaryTransport{
 	private Integer id;
 	private Integer numberOfWheel;
 
-	public MilitaryJeep() {
+	public MilitaryWheels() {
 	}
 
-	public MilitaryJeep(String name, Integer length, Integer width, Boolean isUnderRepaired,
+	public MilitaryWheels(String name, Integer length, Integer width, Boolean isUnderRepaired,
 			TypeTransportRegistration typeTransportRegistration, Boolean isArmed, Integer id, Integer numberOfWheel) {
 		super(name, length, width, isUnderRepaired, typeTransportRegistration, isArmed);
 		this.id = id;
@@ -29,8 +29,8 @@ public class MilitaryJeep extends MilitaryTransport{
 		return numberOfWheel;
 	}
 	public void setNumberOfWheel(Integer numberOfWheel) {
-		if (numberOfWheel < 4) {
-			throw new NegativeNumberException("Numberof wheel cannot be less than 4");
+		if (numberOfWheel < 2) {
+			throw new NegativeNumberException("Numberof wheel cannot be less than 2");
 		}else this.numberOfWheel = numberOfWheel;
 	}
 
@@ -58,7 +58,7 @@ public class MilitaryJeep extends MilitaryTransport{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		MilitaryJeep other = (MilitaryJeep) obj;
+		MilitaryWheels other = (MilitaryWheels) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;

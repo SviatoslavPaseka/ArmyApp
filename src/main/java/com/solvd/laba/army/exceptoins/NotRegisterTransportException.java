@@ -6,7 +6,6 @@ public class NotRegisterTransportException extends RuntimeException{
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
 	public NotRegisterTransportException(String message, Throwable cause, boolean enableSuppression,
 			boolean writableStackTrace) {
 		super(message, cause, enableSuppression, writableStackTrace);

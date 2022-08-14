@@ -6,10 +6,8 @@ public class NegativeNumberException extends NumberFormatException{
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
 	public NegativeNumberException(String s) {
 		super(s);
 		// TODO Auto-generated constructor stub
 	}
-	
 }

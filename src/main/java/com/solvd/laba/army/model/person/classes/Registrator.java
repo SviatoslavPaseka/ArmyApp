@@ -40,6 +40,7 @@ public class Registrator extends Person implements RegistratorService{
 		this.registratorHierarchy = registratorHierarchy;
 	}
 	
+	@Override
 	public void registerTransport(Transport transport,
 								  TypeTransportRegistration typeTransportRegistration) {
 		transport.setTransportRegistration(typeTransportRegistration);
@@ -51,7 +52,8 @@ public class Registrator extends Person implements RegistratorService{
 			setRegistratorHierarchy(RegistratorHierarchy.SECOND);
 		}
 	}
-
+	
+	@Override
 	public Integer getSalaryRegistrator() {
 		return getRegistratorHierarchy().getSalary();
 	}

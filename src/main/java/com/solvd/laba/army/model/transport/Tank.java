@@ -12,6 +12,9 @@ public class Tank extends MilitaryTransport{
 		this.id = id;
 		super.setSpecializationMilitary(SpecializationMilitary.TANKS);
 	}
+	public Tank() {
+		// TODO Auto-generated constructor stub
+	}
 	public Integer getId() {
 		return id;
 	}

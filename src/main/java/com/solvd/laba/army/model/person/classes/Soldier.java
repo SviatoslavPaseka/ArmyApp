@@ -22,15 +22,15 @@ import com.solvd.laba.army.model.transport.Transport;
 import com.solvd.laba.army.model.weapons.HandWeapon;
  
 public class Soldier extends Person implements SoldierService{
-	final Logger log = Logger.getLogger(Soldier.class);
+	
+	private static final Logger LOGGER = Logger.getLogger(Soldier.class);
+	
 	private MilitaryRank militaryRank;
 	private SpecializationMilitary specialization;
 	private List<HandWeapon> personalWeapon;
 	
 	public Soldier() {
 	}
-	
-	
 
 	public Soldier(Integer id, String name, Gender gender, LocalDate dob, Boolean haveMedicalExamination,
 					MilitaryRank militaryRank, SpecializationMilitary specialization,
@@ -41,15 +41,12 @@ public class Soldier extends Person implements SoldierService{
 		this.personalWeapon = personalWeapon;
 	}
 
-
-
 	public MilitaryRank getMilitaryRank() {
 		return militaryRank;
 	}
 	public void setMilitaryRank(MilitaryRank militaryRank) {
 		this.militaryRank = militaryRank;
 	}
-	
 
 	public SpecializationMilitary getSpecialization() {
 		return specialization;
@@ -89,6 +86,7 @@ public class Soldier extends Person implements SoldierService{
 		result = prime * result + ((specialization == null) ? 0 : specialization.hashCode());
 		return result;
 	}
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -109,6 +107,8 @@ public class Soldier extends Person implements SoldierService{
 			return false;
 		return true;
 	}
+	
+	@Override
 	public MilitaryRecruiter comeToRecruiterFromSoldier(Soldier soldier, 
 														Integer salary, 
 														RecruiterRank recruiterRank) {
@@ -121,45 +121,52 @@ public class Soldier extends Person implements SoldierService{
 												salary, getMilitaryRank());
 		militaryRecruiter.setRecruiterRank(recruiterRank);
 		
-		return militaryRecruiter;
+		return militaryRecruiter;//delete obj
 	}
+	@Override
 	public void cleanHandWeapon(Integer numberPersonalWeapon){
 		//номер зброї починається з 1
 		if (numberPersonalWeapon <= 0) {
-			log.info("try to enter zero and less than zero value");
+			LOGGER.info("try to enter zero and less than zero value");
 			return;
 		}
 		try {
 			getPersonalWeapon().get(numberPersonalWeapon - 1).setIsClean(true);
 		} catch (IndexOutOfBoundsException e) {
-			log.warn(e);
+			LOGGER.error(e);//to error
 			
-			log.info("This soilder has " + getPersonalWeapon().size() + " weapons!");
+			LOGGER.info("This soilder has " + getPersonalWeapon().size() + " weapons!");
 		}
 	}
+	@Override
 	public void doRepairTransport(Transport transport) {
-		if (transport.getIsUnderRepaired().equals(false) && 
-			!transport.getTransportRegistration().equals(TypeTransportRegistration.NONE)) {
-			System.out.println("This transport need not repair");
-			return;
-		}
-		
+		//refactored
 		if (transport.getTransportRegistration().equals(TypeTransportRegistration.NONE)) {
+			LOGGER.error("NotRegisterException");
 			throw new NotRegisterTransportException("This transport does not has any regisatration");
 		}else {
-			if(getMilitaryRank().equals(MilitaryRank.MECHANIC)&&
-				getSpecialization().equals(transport.getSpecializationMilitary())) {
-				transport.setIsUnderRepaired(false);
-			}else if (getMilitaryRank() != MilitaryRank.MECHANIC) {
-				throw new RepairSpecializationException("This soldier is not mechanic");
-			}else if(!getSpecialization().equals(transport.getSpecializationMilitary())) {
-				throw new RepairSpecializationException
-				("This transport has " + transport.getSpecializationMilitary() +
-				" specialization but current mechanic has this specialization: " + 
-				getSpecialization());
+			if (!transport.getIsUnderRepaired()) {
+				LOGGER.info("This transport need not repair");
+			}else {
+				if (!getMilitaryRank().equals(MilitaryRank.MECHANIC)) {
+					LOGGER.error("Soldier specialization exception");
+					throw new RepairSpecializationException("This soldier is not mechanic");
+				}else {
+					if (!getSpecialization().equals(transport.getSpecializationMilitary())) {
+						LOGGER.error("Transport specialization exception");
+						throw new RepairSpecializationException
+						("This transport has " + transport.getSpecializationMilitary() +
+						" specialization but current mechanic has this specialization: " + 
+						getSpecialization());
+					}else {
+						transport.setIsUnderRepaired(false);
+					}
+				}
 			}
 		}
 	}
+	
+	@Override
 	public Map<Integer, TypeHandsWeapon> getAllHandWeaponByIdAndType(){
 		Map<Integer, TypeHandsWeapon> result = 
 				getPersonalWeapon().stream().
