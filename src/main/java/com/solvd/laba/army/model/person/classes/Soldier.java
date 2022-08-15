@@ -118,38 +118,37 @@ public class Soldier extends Person implements SoldierService{
 												getGender(),
 												getDob(),
 												getHaveMedicalExamination(),
-												salary, getMilitaryRank());
-		militaryRecruiter.setRecruiterRank(recruiterRank);
+												salary, recruiterRank);
+		militaryRecruiter.setMilitaryRank(getMilitaryRank());
 		
 		return militaryRecruiter;//delete obj
 	}
 	@Override
 	public void cleanHandWeapon(Integer numberPersonalWeapon){
-		//номер зброї починається з 1
-		if (numberPersonalWeapon <= 0) {
-			LOGGER.info("try to enter zero and less than zero value");
+		if (numberPersonalWeapon < 0) {
+			LOGGER.warn("try to enter less than zero value");
 			return;
 		}
 		try {
-			getPersonalWeapon().get(numberPersonalWeapon - 1).setIsClean(true);
+			getPersonalWeapon().get(numberPersonalWeapon).setIsClean(true);
 		} catch (IndexOutOfBoundsException e) {
-			LOGGER.error(e);//to error
-			
+			LOGGER.error(e);
 			LOGGER.info("This soilder has " + getPersonalWeapon().size() + " weapons!");
 		}
 	}
+	
 	@Override
 	public void doRepairTransport(Transport transport) {
-		//refactored
+		//refactored 
 		if (transport.getTransportRegistration().equals(TypeTransportRegistration.NONE)) {
-			LOGGER.error("NotRegisterException");
+			LOGGER.error("This transport does not has any regisatration");
 			throw new NotRegisterTransportException("This transport does not has any regisatration");
 		}else {
 			if (!transport.getIsUnderRepaired()) {
 				LOGGER.info("This transport need not repair");
 			}else {
 				if (!getMilitaryRank().equals(MilitaryRank.MECHANIC)) {
-					LOGGER.error("Soldier specialization exception");
+					LOGGER.error("This soldier is not mechanic");
 					throw new RepairSpecializationException("This soldier is not mechanic");
 				}else {
 					if (!getSpecialization().equals(transport.getSpecializationMilitary())) {

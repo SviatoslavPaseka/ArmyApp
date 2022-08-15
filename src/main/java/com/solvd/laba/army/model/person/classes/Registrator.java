@@ -2,6 +2,8 @@ package com.solvd.laba.army.model.person.classes;
 
 import java.time.LocalDate;
 
+import org.apache.log4j.Logger;
+
 import com.solvd.laba.army.exceptoins.NegativeNumberException;
 import com.solvd.laba.army.model.enums.Gender;
 import com.solvd.laba.army.model.enums.RegistratorHierarchy;
@@ -11,6 +13,8 @@ import com.solvd.laba.army.model.person.interfaces.RegistratorService;
 import com.solvd.laba.army.model.transport.Transport;
 
 public class Registrator extends Person implements RegistratorService{
+	private static final Logger LOGGER = Logger.getLogger(Registrator.class);
+	
 	private Integer numberRegistration = 0;
 	private RegistratorHierarchy registratorHierarchy = RegistratorHierarchy.ZERO;
 	
@@ -35,7 +39,7 @@ public class Registrator extends Person implements RegistratorService{
 	public RegistratorHierarchy getRegistratorHierarchy() {
 		return registratorHierarchy;
 	}
-
+ 
 	public void setRegistratorHierarchy(RegistratorHierarchy registratorHierarchy) {
 		this.registratorHierarchy = registratorHierarchy;
 	}
@@ -43,9 +47,12 @@ public class Registrator extends Person implements RegistratorService{
 	@Override
 	public void registerTransport(Transport transport,
 								  TypeTransportRegistration typeTransportRegistration) {
-		transport.setTransportRegistration(typeTransportRegistration);
-		numberRegistration++;
-		
+		if (typeTransportRegistration != null) {
+			transport.setTransportRegistration(typeTransportRegistration);
+			numberRegistration++;
+		}else {
+			LOGGER.warn("typeTransportRegistration cannot be null!\n Transport was not registered");
+		}
 		if (numberRegistration > 0 && getRegistratorHierarchy() == RegistratorHierarchy.ZERO) {
 			setRegistratorHierarchy(RegistratorHierarchy.FIRST);
 		}else if (numberRegistration > 10 && getRegistratorHierarchy() != RegistratorHierarchy.SECOND) {

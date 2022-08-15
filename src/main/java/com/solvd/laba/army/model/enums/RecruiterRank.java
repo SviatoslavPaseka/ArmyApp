@@ -1,6 +1,6 @@
 package com.solvd.laba.army.model.enums;
 
-public enum RecruiterRank {
+public enum RecruiterRank { 
 	MILITARY_DOCTOR("Military doctor"), 
 	RANK1_EMPL("Employee rank1"),
 	RANK2_EMPL("Employee rank1"), 

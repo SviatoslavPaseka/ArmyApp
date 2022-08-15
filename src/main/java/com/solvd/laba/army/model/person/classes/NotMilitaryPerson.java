@@ -14,9 +14,9 @@ public class NotMilitaryPerson extends Person {
 	}
 
 	@Override
-	public String toString() {
-		return "NotMilitaryPerson [getId()=" + getId() + ", getName()=" + getName() + ", getGender()=" + getGender()
-				+ ", getDob()=" + getDob() + ", getHaveMedicalExamination()=" + getHaveMedicalExamination() + "]";
+	public String toString() { 
+		return "Peron: Id " + getId() + ", name " + getName() + ", gender " + getGender()
+				+ ", dob " + getDob() + ", HaveMedicalExamination " + getHaveMedicalExamination();
 	}
 
 	@Override
@@ -28,7 +28,7 @@ public class NotMilitaryPerson extends Person {
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
-		if (!super.equals(obj))
+		if (!super.equals(obj)) 
 			return false;
 		if (getClass() != obj.getClass())
 			return false;

@@ -2,7 +2,6 @@ package com.solvd.laba.army.model;
 
 import java.util.List;
 
-import com.solvd.laba.army.model.enums.SpecializationMilitary;
 import com.solvd.laba.army.model.transport.Transport;
 
 public class ArmyBranch<T extends Transport> {
@@ -10,10 +9,11 @@ public class ArmyBranch<T extends Transport> {
 	private String name;
 	private List<T> transportInThisBranch;
 	
-	public ArmyBranch() {
+	public ArmyBranch() { 
 	}
-	public ArmyBranch(Integer id, String name, List<SpecializationMilitary> specialization,
-			List<T> transportInThisBranch) {
+
+	public ArmyBranch(Integer id, String name, List<T> transportInThisBranch) {
+		super();
 		this.id = id;
 		this.name = name;
 		this.transportInThisBranch = transportInThisBranch;
@@ -37,16 +37,22 @@ public class ArmyBranch<T extends Transport> {
 	public void setTransportInThisBranch(List<T> transportInThisBranch) {
 		this.transportInThisBranch = transportInThisBranch;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "ArmyBranch [id=" + id + ", name=" + name + ", transportInThisBranch=" + transportInThisBranch + "]";
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + ((transportInThisBranch == null) ? 0 : transportInThisBranch.hashCode());
 		return result;
 	}
-	
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -66,12 +72,11 @@ public class ArmyBranch<T extends Transport> {
 				return false;
 		} else if (!name.equals(other.name))
 			return false;
+		if (transportInThisBranch == null) {
+			if (other.transportInThisBranch != null)
+				return false;
+		} else if (!transportInThisBranch.equals(other.transportInThisBranch))
+			return false;
 		return true;
 	}
-	@Override
-	public String toString() {
-		return "ArmyBranch [id=" + id + ", name=" + name + 
-				", transportInThisBranch=" + transportInThisBranch + "]";
-	}
-	
 }

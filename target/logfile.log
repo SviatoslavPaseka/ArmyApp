@@ -4,3 +4,156 @@
 2022-08-14 19:54:22 INFO  ArmyApplication:24 - [NotMilitaryPerson [getId()=2, getName()=Dima, getGender()=MALE, getDob()=2000-01-01, getHaveMedicalExamination()=true]]
 2022-08-14 19:54:43 INFO  MilitaryRecruiter:132 - Receivind list of fit people
 2022-08-14 19:54:43 INFO  ArmyApplication:24 - [NotMilitaryPerson [getId()=2, getName()=Dima, getGender()=MALE, getDob()=2000-01-01, getHaveMedicalExamination()=true]]
+2022-08-15 13:13:26 INFO  SoldierTest:29 - before: true
+2022-08-15 13:13:26 ERROR Soldier:152 - Soldier specialization exception
+2022-08-15 13:14:08 INFO  SoldierTest:29 - before: true
+2022-08-15 13:14:08 INFO  SoldierTest:31 - after: false
+2022-08-15 13:14:21 INFO  SoldierTest:29 - before: true
+2022-08-15 13:14:21 ERROR Soldier:152 - Soldier specialization exception
+2022-08-15 13:14:56 INFO  SoldierTest:29 - before: false
+2022-08-15 13:14:56 INFO  Soldier:149 - This transport need not repair
+2022-08-15 13:14:56 INFO  SoldierTest:31 - after: false
+2022-08-15 13:15:32 INFO  SoldierTest:29 - before: true
+2022-08-15 13:15:32 ERROR Soldier:145 - NotRegisterException
+2022-08-15 13:57:31 INFO  SoldierTest:31 - Key=121, value=pistol
+2022-08-15 13:57:31 INFO  SoldierTest:31 - Key=122, value=rifle
+2022-08-15 13:59:18 INFO  SoldierTest:31 - Key=121, value=pistol
+2022-08-15 13:59:18 INFO  SoldierTest:31 - Key=122, value=rifle
+2022-08-15 14:16:32 INFO  SoldierTest:54 - before: true
+2022-08-15 14:16:32 ERROR Soldier:145 - NotRegisterException
+2022-08-15 14:17:07 INFO  SoldierTest:55 - before: true
+2022-08-15 14:17:07 INFO  SoldierTest:57 - after: false
+2022-08-15 14:17:31 INFO  SoldierTest:55 - before: true
+2022-08-15 14:17:31 ERROR Soldier:156 - Transport specialization exception
+2022-08-15 14:18:19 INFO  SoldierTest:55 - before: true
+2022-08-15 14:18:19 ERROR Soldier:145 - NotRegisterException
+2022-08-15 14:20:06 INFO  SoldierTest:55 - before: true
+2022-08-15 14:20:06 ERROR Soldier:145 - NotRegisterTransportException
+2022-08-15 14:23:16 INFO  SoldierTest:55 - before: true
+2022-08-15 14:23:16 ERROR Soldier:145 - This transport does not has any regisatration
+2022-08-15 14:24:42 INFO  SoldierTest:56 - before: true
+2022-08-15 14:24:42 ERROR Soldier:145 - This transport does not has any regisatration
+2022-08-15 14:24:42 ERROR SoldierTest:60 - com.solvd.laba.army.exceptoins.NotRegisterTransportException: This transport does not has any regisatration
+2022-08-15 14:24:42 INFO  SoldierTest:62 - after: true
+2022-08-15 14:25:25 INFO  SoldierTest:56 - before: true
+2022-08-15 14:25:25 ERROR Soldier:152 - This soldier is not mechanic
+2022-08-15 14:26:11 INFO  SoldierTest:57 - before: true
+2022-08-15 14:26:11 ERROR Soldier:152 - This soldier is not mechanic
+2022-08-15 14:26:11 ERROR SoldierTest:63 - com.solvd.laba.army.exceptoins.RepairSpecializationException: This soldier is not mechanic
+2022-08-15 14:26:11 INFO  SoldierTest:65 - after: true
+2022-08-15 14:26:34 INFO  SoldierTest:57 - before: true
+2022-08-15 14:26:34 ERROR Soldier:156 - Transport specialization exception
+2022-08-15 14:26:34 ERROR SoldierTest:63 - com.solvd.laba.army.exceptoins.RepairSpecializationException: This transport has TANKS specialization but current mechanic has this specialization: FLYING
+2022-08-15 14:26:34 INFO  SoldierTest:65 - after: true
+2022-08-15 14:29:16 INFO  SoldierTest:34 - Key=121, value=pistol
+2022-08-15 14:29:16 INFO  SoldierTest:34 - Key=122, value=rifle
+2022-08-15 14:29:16 INFO  SoldierTest:57 - before: true
+2022-08-15 14:29:16 INFO  SoldierTest:65 - after: false
+2022-08-15 14:44:22 INFO  SoldierTest:51 - before: HandWeapon gunId=121, typeHadsWeapon=PISTOL, is clean=false, Year Manufactured=2022-08-15
+2022-08-15 14:44:22 INFO  Soldier:130 - try to enter zero and less than zero value
+2022-08-15 14:44:22 INFO  SoldierTest:53 - after: HandWeapon gunId=121, typeHadsWeapon=PISTOL, is clean=false, Year Manufactured=2022-08-15
+2022-08-15 14:44:59 INFO  SoldierTest:51 - before: false
+2022-08-15 14:44:59 INFO  SoldierTest:53 - after: true
+2022-08-15 14:44:59 INFO  SoldierTest:33 - Key=121, value=pistol
+2022-08-15 14:44:59 INFO  SoldierTest:33 - Key=122, value=rifle
+2022-08-15 14:44:59 INFO  SoldierTest:38 - before: true
+2022-08-15 14:44:59 INFO  SoldierTest:46 - after: false
+2022-08-15 14:45:14 INFO  SoldierTest:51 - before: false
+2022-08-15 14:45:14 INFO  SoldierTest:53 - after: true
+2022-08-15 14:45:34 INFO  SoldierTest:51 - before: false
+2022-08-15 14:45:34 INFO  Soldier:130 - try to enter zero and less than zero value
+2022-08-15 14:45:34 INFO  SoldierTest:53 - after: false
+2022-08-15 14:45:48 INFO  SoldierTest:51 - before: false
+2022-08-15 14:45:48 ERROR Soldier:136 - java.lang.ArrayIndexOutOfBoundsException: Index 2 out of bounds for length 2
+2022-08-15 14:45:48 INFO  Soldier:138 - This soilder has 2 weapons!
+2022-08-15 14:45:48 INFO  SoldierTest:53 - after: false
+2022-08-15 14:47:12 INFO  SoldierTest:51 - before: false
+2022-08-15 14:47:12 INFO  SoldierTest:53 - after: true
+2022-08-15 14:47:12 INFO  SoldierTest:33 - Key=121, value=pistol
+2022-08-15 14:47:12 INFO  SoldierTest:33 - Key=122, value=rifle
+2022-08-15 14:47:12 INFO  SoldierTest:38 - before: true
+2022-08-15 14:47:12 INFO  SoldierTest:46 - after: false
+2022-08-15 14:47:13 INFO  SoldierTest:51 - before: false
+2022-08-15 14:47:13 INFO  SoldierTest:53 - after: true
+2022-08-15 14:47:13 INFO  SoldierTest:33 - Key=121, value=pistol
+2022-08-15 14:47:13 INFO  SoldierTest:33 - Key=122, value=rifle
+2022-08-15 14:47:13 INFO  SoldierTest:38 - before: true
+2022-08-15 14:47:13 INFO  SoldierTest:46 - after: false
+2022-08-15 14:47:28 INFO  SoldierTest:51 - before: false
+2022-08-15 14:47:28 INFO  SoldierTest:53 - after: true
+2022-08-15 14:54:15 INFO  SoldierTest:54 - global: false local: false
+2022-08-15 14:54:15 INFO  SoldierTest:56 - global: true local: true
+2022-08-15 14:57:03 INFO  SoldierTest:54 - global: false local: false
+2022-08-15 14:57:03 INFO  SoldierTest:56 - global: true local: true
+2022-08-15 15:32:49 INFO  SoldierTest:53 - before: false
+2022-08-15 15:32:49 INFO  SoldierTest:55 - after: true
+2022-08-15 16:41:47 INFO  SoldierTest:62 - before: MilitaryRecruiter [recruiterRank=null, salary=null, militaryRank=NONE, getId()=null, getName()=null, getGender()=null, Dob=null
+2022-08-15 16:41:47 INFO  SoldierTest:65 - after: MilitaryRecruiter [recruiterRank=RANK1_EMPL, salary=1300, militaryRank=MECHANIC, getId()=1, getName()=Sam, getGender()=MALE, Dob=2000-01-01
+2022-08-15 16:43:25 INFO  SoldierTest:54 - before: false
+2022-08-15 16:43:25 INFO  SoldierTest:56 - after: true
+2022-08-15 16:43:25 INFO  SoldierTest:35 - Key=121, value=pistol
+2022-08-15 16:43:25 INFO  SoldierTest:35 - Key=122, value=rifle
+2022-08-15 16:43:25 INFO  SoldierTest:40 - before: true
+2022-08-15 16:43:25 INFO  SoldierTest:48 - after: false
+2022-08-15 16:43:25 INFO  SoldierTest:62 - before: MilitaryRecruiter [recruiterRank=null, salary=null, militaryRank=NONE, getId()=null, getName()=null, getGender()=null, Dob=null
+2022-08-15 16:43:25 INFO  SoldierTest:65 - after: MilitaryRecruiter [recruiterRank=RANK1_EMPL, salary=1300, militaryRank=MECHANIC, getId()=1, getName()=Sam, getGender()=MALE, Dob=2000-01-01
+2022-08-15 17:59:55 INFO  SoldierTest:41 - before: true
+2022-08-15 17:59:55 INFO  SoldierTest:49 - after: false
+2022-08-15 18:02:01 INFO  SoldierTest:41 - before: true
+2022-08-15 18:02:01 INFO  SoldierTest:49 - after: false
+2022-08-15 18:02:43 INFO  SoldierTest:41 - before: true
+2022-08-15 18:02:43 ERROR Soldier:144 - This transport does not has any regisatration
+2022-08-15 18:02:43 ERROR SoldierTest:45 - com.solvd.laba.army.exceptoins.NotRegisterTransportException: This transport does not has any regisatration
+2022-08-15 18:02:43 INFO  SoldierTest:49 - after: true
+2022-08-15 18:06:17 INFO  MilitaryRecruiter:135 - Receivind list of fit people
+2022-08-15 18:07:31 INFO  MilitaryRecruiter:135 - Receivind list of fit people
+2022-08-15 18:08:00 INFO  MilitaryRecruiter:135 - Receivind list of fit people
+2022-08-15 18:13:06 INFO  MilitaryRecruiter:135 - Receivind list of fit people
+2022-08-15 18:13:18 INFO  MilitaryRecruiter:135 - Receivind list of fit people
+2022-08-15 18:13:18 ERROR MilitaryRecruiterTest:37 - Result list not equals expected list
+2022-08-15 18:13:55 INFO  MilitaryRecruiter:135 - Receivind list of fit people
+2022-08-15 18:34:27 INFO  MilitaryRecruiterTest:31 - Not summoned: Peron: Id 1, name Sam, gender FEMALE, dob 2000-01-02, HaveMedicalExamination true
+2022-08-15 18:34:27 INFO  MilitaryRecruiterTest:33 - Summoned: Soldier:
+Name:Sam, 
+date of birth:2000-01-02, 
+gender:female, 
+military rank:private, 
+military specialization:FLYING, 
+personal weapon:[HandWeapon gunId=1012, typeHadsWeapon=PISTOL, is clean=true, Year Manufactured=2022-08-15]
+2022-08-15 18:34:27 INFO  MilitaryRecruiterTest:31 - Not summoned: Peron: Id 1, name Sam, gender FEMALE, dob 2000-01-02, HaveMedicalExamination true
+2022-08-15 18:34:27 INFO  MilitaryRecruiterTest:33 - Summoned: Soldier:
+Name:Sam, 
+date of birth:2000-01-02, 
+gender:female, 
+military rank:private, 
+military specialization:TANKS, 
+personal weapon:[HandWeapon gunId=1012, typeHadsWeapon=PISTOL, is clean=true, Year Manufactured=2022-08-15]
+2022-08-15 18:35:28 INFO  MilitaryRecruiterTest:31 - Not summoned: Peron: Id 1, name Jam, gender MALE, dob 2000-01-02, HaveMedicalExamination true
+2022-08-15 18:35:28 INFO  MilitaryRecruiterTest:33 - Summoned: Soldier:
+Name:Jam, 
+date of birth:2000-01-02, 
+gender:male, 
+military rank:private, 
+military specialization:FLYING, 
+personal weapon:[HandWeapon gunId=1012, typeHadsWeapon=PISTOL, is clean=true, Year Manufactured=2022-08-15]
+2022-08-15 18:35:28 INFO  MilitaryRecruiterTest:31 - Not summoned: Peron: Id 1, name Sam, gender FEMALE, dob 2009-01-02, HaveMedicalExamination true
+2022-08-15 18:35:28 WARN  MilitaryRecruiter:119 - This person can not be summon to army
+2022-08-15 18:35:28 INFO  MilitaryRecruiterTest:33 - Summoned: null
+2022-08-15 18:52:58 INFO  MilitaryRecruiterTest:52 - Start to do medical examination
+2022-08-15 18:52:58 INFO  MilitaryRecruiterTest:52 - Start to do medical examination
+2022-08-15 18:52:58 INFO  MilitaryRecruiter:109 - you are not a doctor
+2022-08-15 19:07:17 WARN  Registrator:54 - typeTransportRegistration cannot be null!
+ Transport was not registered
+2022-08-15 19:07:17 WARN  Registrator:54 - typeTransportRegistration cannot be null!
+ Transport was not registered
+2022-08-15 19:08:26 WARN  Registrator:54 - typeTransportRegistration cannot be null!
+ Transport was not registered
+2022-08-15 19:09:25 WARN  Registrator:54 - typeTransportRegistration cannot be null!
+ Transport was not registered
+2022-08-15 19:10:53 INFO  RegistratorTest:32 - Registration completed successfully
+2022-08-15 19:10:53 INFO  RegistratorTest:32 - Registration completed successfully
+2022-08-15 19:10:53 WARN  Registrator:54 - typeTransportRegistration cannot be null!
+ Transport was not registered
+2022-08-15 19:11:19 INFO  RegistratorTest:32 - Registration completed successfully
+2022-08-15 19:11:19 INFO  RegistratorTest:32 - Registration completed successfully
+2022-08-15 19:11:19 INFO  RegistratorTest:32 - Registration completed successfully

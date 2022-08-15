@@ -1,6 +1,7 @@
 package com.solvd.laba.army.model.person.classes;
 
 import java.time.LocalDate;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -12,6 +13,7 @@ import com.solvd.laba.army.model.enums.Gender;
 import com.solvd.laba.army.model.enums.MilitaryRank;
 import com.solvd.laba.army.model.enums.RecruiterRank;
 import com.solvd.laba.army.model.enums.SpecializationMilitary;
+import com.solvd.laba.army.model.enums.TypeHandsWeapon;
 import com.solvd.laba.army.model.person.Person;
 import com.solvd.laba.army.model.person.interfaces.MIlitaryRecruiterService;
 import com.solvd.laba.army.model.weapons.HandWeapon;
@@ -20,7 +22,7 @@ public class MilitaryRecruiter extends Person implements MIlitaryRecruiterServic
 
 	private static final Logger LOGGER = Logger.getLogger(MilitaryRecruiter.class);
 	
-	private RecruiterRank recruiterRank;
+	private RecruiterRank recruiterRank; 
 	private Integer salary;
 	private MilitaryRank militaryRank = MilitaryRank.NONE;
 	
@@ -28,10 +30,10 @@ public class MilitaryRecruiter extends Person implements MIlitaryRecruiterServic
 	}
 	
 	public MilitaryRecruiter(Integer id, String name, Gender gender, LocalDate dob, 
-						Boolean haveMedicalExamination, Integer salary, MilitaryRank militaryRank) {
+						Boolean haveMedicalExamination, Integer salary, RecruiterRank recruiterRank) {
 		super(id, name, gender, dob, haveMedicalExamination);
 		this.salary = salary;
-		this.militaryRank = militaryRank;
+		this.recruiterRank = recruiterRank;
 	}
 
 	public RecruiterRank getRecruiterRank() {
@@ -100,8 +102,8 @@ public class MilitaryRecruiter extends Person implements MIlitaryRecruiterServic
 		return true;
 	}
 
-	public void medicalExamination(Person person, RecruiterRank recruiterRank) {
-		if (recruiterRank == RecruiterRank.MILITARY_DOCTOR) {
+	public void medicalExamination(Person person) {
+		if (getRecruiterRank() == RecruiterRank.MILITARY_DOCTOR) {
 			person.setHaveMedicalExamination(true);
 		}else {
 			LOGGER.info("you are not a doctor");
@@ -109,10 +111,11 @@ public class MilitaryRecruiter extends Person implements MIlitaryRecruiterServic
 	}
 
 	@Override
-	public Soldier summonSoldier(Person person, MilitaryRank militaryRank, SpecializationMilitary specializationMilitary, List<HandWeapon> personalWeapons) {
+	public Soldier summonSoldier(NotMilitaryPerson person, 
+								SpecializationMilitary specializationMilitary) {
 		
 		if (person.getDob().getYear() + 18 > LocalDate.now().getYear() ||
-			person.getDob().getYear() + 60 <= LocalDate.now().getYear()) {
+			person.getDob().getYear() + 60 <= LocalDate.now().getYear() || !person.getHaveMedicalExamination()) {
 			LOGGER.warn("This person can not be summon to army");
 			return null;
 		}
@@ -121,9 +124,9 @@ public class MilitaryRecruiter extends Person implements MIlitaryRecruiterServic
 							person.getGender(),
 							person.getDob(),
 							person.getHaveMedicalExamination(),
-							militaryRank,
+							MilitaryRank.PRIVATE,
 							specializationMilitary,
-							personalWeapons);
+							Arrays.asList(new HandWeapon(LocalDate.now(), 1012, TypeHandsWeapon.PISTOL, true)));
 	}
 
 	@Override
@@ -132,6 +135,7 @@ public class MilitaryRecruiter extends Person implements MIlitaryRecruiterServic
 		LOGGER.info("Receivind list of fit people");
 		return allPeople.stream()
 					.filter(e -> e.getDob().getYear() < LocalDate.now().getYear() - 18)
+					.filter(e -> e.getDob().getYear() > LocalDate.now().getYear() - 60)
 					.filter(i -> i.getHaveMedicalExamination())
 					.collect(Collectors.toList());
 	}
