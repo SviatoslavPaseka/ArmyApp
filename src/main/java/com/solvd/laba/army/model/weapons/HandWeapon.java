@@ -4,14 +4,11 @@ import java.time.LocalDate;
 
 import com.solvd.laba.army.model.enums.TypeHandsWeapon;
 
-/*add methods: needRepaired
- shoot
- */
-
 public class HandWeapon extends Weapon{
 	private Integer gunId;
 	private TypeHandsWeapon typeHadsWeapon;
 	private Boolean isClean;
+	
 	public HandWeapon() {
 	}
 	public HandWeapon(LocalDate yearManufactured, Integer gunId,
@@ -78,4 +75,6 @@ public class HandWeapon extends Weapon{
 			return false;
 		return true;
 	}
+	
+	
 }

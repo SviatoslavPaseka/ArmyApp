@@ -26,7 +26,6 @@ import com.solvd.laba.army.model.weapons.HandWeapon;
 @TestInstance(Lifecycle.PER_CLASS)
 public class MilitaryRecruiterTest {
 	private static final Logger LOGGER = Logger.getLogger(MilitaryRecruiterTest.class);
-	
 	@ParameterizedTest
 	@MethodSource(value  = "sourceToSummonSoldierTest")
 	void summonSoldierTest(NotMilitaryPerson person, SpecializationMilitary specialization) {
@@ -34,7 +33,9 @@ public class MilitaryRecruiterTest {
 		LOGGER.info("Not summoned: " + person);
 		Soldier soldier = militaryRecruiter.summonSoldier(person, specialization);
 		LOGGER.info("Summoned: " + soldier);
+		
 	}
+	
 	@ParameterizedTest
 	@MethodSource(value = "sourceListListNotMilitaryPerson")
 	void getFitPeopleTest(List<NotMilitaryPerson> allPeople) {
@@ -68,13 +69,13 @@ public class MilitaryRecruiterTest {
 	List<Arguments> sourceToSummonSoldierTest() {
 		return Arrays.asList(Arguments.arguments(
 				new NotMilitaryPerson(1, "Jam", Gender.MALE, LocalDate.of(2000, 1, 2), true), SpecializationMilitary.FLYING), 
-				Arguments.arguments(new NotMilitaryPerson(1, "Sam", Gender.FEMALE, LocalDate.of(2009, 1, 2), true), SpecializationMilitary.TANKS));
+				Arguments.arguments(new NotMilitaryPerson(1, "Sam", Gender.FEMALE, LocalDate.of(2009, 1, 2), true), SpecializationMilitary.TANK));
 	}
 	
 	List<Arguments> sourceMedicalExaminationTest() {
 		return Arrays.asList(Arguments.arguments(
 				new NotMilitaryPerson(1, "Jam", Gender.MALE, LocalDate.of(2000, 1, 2), false), new MilitaryRecruiter(null, null, null, null, null, null, RecruiterRank.MILITARY_DOCTOR)), 
 				Arguments.arguments(new Soldier(1, "Sam", Gender.MALE, LocalDate.of(2000, 1, 1), 
-						false, MilitaryRank.MECHANIC, SpecializationMilitary.TANKS,sourceListHandWeapon()), new MilitaryRecruiter(null, null, null, null, null, null, RecruiterRank.OFFICE_MANAGER)));
+						false, MilitaryRank.MECHANIC, SpecializationMilitary.TANK,sourceListHandWeapon()), new MilitaryRecruiter(null, null, null, null, null, null, RecruiterRank.OFFICE_MANAGER)));
 	}
 }

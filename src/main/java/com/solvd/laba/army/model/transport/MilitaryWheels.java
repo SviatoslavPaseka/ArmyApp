@@ -16,7 +16,7 @@ public class MilitaryWheels extends MilitaryTransport{
 		super(name, length, width, isUnderRepaired, typeTransportRegistration, isArmed);
 		this.id = id;
 		this.numberOfWheel = numberOfWheel;
-		super.setSpecializationMilitary(SpecializationMilitary.JEEPS);
+		super.setSpecializationMilitary(SpecializationMilitary.WHEEL);
 	}
 
 	public Integer getId() {

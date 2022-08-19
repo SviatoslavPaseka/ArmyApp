@@ -15,10 +15,12 @@ import com.solvd.laba.army.model.enums.RecruiterRank;
 import com.solvd.laba.army.model.enums.SpecializationMilitary;
 import com.solvd.laba.army.model.enums.TypeHandsWeapon;
 import com.solvd.laba.army.model.person.Person;
-import com.solvd.laba.army.model.person.interfaces.MIlitaryRecruiterService;
+import com.solvd.laba.army.model.person.interfaces.IMilitaryRecruiter;
 import com.solvd.laba.army.model.weapons.HandWeapon;
 
-public class MilitaryRecruiter extends Person implements MIlitaryRecruiterService{
+
+//create a fireSoldier method
+public class MilitaryRecruiter extends Person implements IMilitaryRecruiter{
 
 	private static final Logger LOGGER = Logger.getLogger(MilitaryRecruiter.class);
 	

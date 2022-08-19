@@ -10,7 +10,7 @@ public class Tank extends MilitaryTransport{
 			Boolean isUnderRepaired, TypeTransportRegistration typeTransportRegistration, Boolean isArmed, Integer id) {
 		super(name, length, width, isUnderRepaired, typeTransportRegistration, isArmed);
 		this.id = id;
-		super.setSpecializationMilitary(SpecializationMilitary.TANKS);
+		super.setSpecializationMilitary(SpecializationMilitary.TANK);
 	}
 	public Tank() {
 		// TODO Auto-generated constructor stub

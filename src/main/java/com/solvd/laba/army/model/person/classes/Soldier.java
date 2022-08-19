@@ -17,11 +17,11 @@ import com.solvd.laba.army.model.enums.SpecializationMilitary;
 import com.solvd.laba.army.model.enums.TypeHandsWeapon;
 import com.solvd.laba.army.model.enums.TypeTransportRegistration;
 import com.solvd.laba.army.model.person.Person;
-import com.solvd.laba.army.model.person.interfaces.SoldierService;
+import com.solvd.laba.army.model.person.interfaces.ISoldier;
 import com.solvd.laba.army.model.transport.Transport;
 import com.solvd.laba.army.model.weapons.HandWeapon;
  
-public class Soldier extends Person implements SoldierService{
+public class Soldier extends Person implements ISoldier{
 	
 	private static final Logger LOGGER = Logger.getLogger(Soldier.class);
 	
@@ -68,13 +68,14 @@ public class Soldier extends Person implements SoldierService{
 
 	@Override
 	public String toString() {
-		return "Soldier:\n" + 
-				"Name:" + getName() + 
-				", \ndate of birth:" + getDob()	+ 
-				", \ngender:" + getGender().toString().toLowerCase() +
-				", \nmilitary rank:" + militaryRank.toString().toLowerCase() + 
-				", \nmilitary specialization:" + specialization + 
-				", \npersonal weapon:" + personalWeapon;
+		return getId() + "," +
+				getName() + "," + 
+				getGender() + "," +
+				getDob() + "," + 
+				getHaveMedicalExamination() + "," +
+				militaryRank + "," +
+				specialization + "," +
+				personalWeapon;
 	}
 	
 	@Override
@@ -109,9 +110,7 @@ public class Soldier extends Person implements SoldierService{
 	}
 	
 	@Override
-	public MilitaryRecruiter comeToRecruiterFromSoldier(Soldier soldier, 
-														Integer salary, 
-														RecruiterRank recruiterRank) {
+	public MilitaryRecruiter comeToRecruiterFromSoldier(Integer salary, RecruiterRank recruiterRank) {
 		
 		MilitaryRecruiter militaryRecruiter = new MilitaryRecruiter(getId(),
 												getName(),
@@ -121,7 +120,7 @@ public class Soldier extends Person implements SoldierService{
 												salary, recruiterRank);
 		militaryRecruiter.setMilitaryRank(getMilitaryRank());
 		
-		return militaryRecruiter;//delete obj
+		return militaryRecruiter;
 	}
 	@Override
 	public void cleanHandWeapon(Integer numberPersonalWeapon){
@@ -173,4 +172,5 @@ public class Soldier extends Person implements SoldierService{
 						toMap(HandWeapon::getGunId, HandWeapon::getTypeHadsWeapon));
 		return result;
 	}
+	
 }

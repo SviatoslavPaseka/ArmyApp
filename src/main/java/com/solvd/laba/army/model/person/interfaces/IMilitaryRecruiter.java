@@ -7,7 +7,7 @@ import com.solvd.laba.army.model.person.Person;
 import com.solvd.laba.army.model.person.classes.NotMilitaryPerson;
 import com.solvd.laba.army.model.person.classes.Soldier;
 
-public interface MIlitaryRecruiterService {//IMilitaryRecrutire
+public interface IMilitaryRecruiter {//IMilitaryRecrutire
 	void medicalExamination(Person person);
 	Soldier summonSoldier(NotMilitaryPerson person, SpecializationMilitary specializationMilitary);
 	List<NotMilitaryPerson> getFitPeople(List<NotMilitaryPerson> allPeople);

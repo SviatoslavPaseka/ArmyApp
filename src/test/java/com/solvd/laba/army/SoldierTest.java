@@ -25,7 +25,7 @@ import com.solvd.laba.army.model.person.classes.Soldier;
 import com.solvd.laba.army.model.transport.Tank;
 import com.solvd.laba.army.model.weapons.HandWeapon;
 
-@TestInstance(Lifecycle.PER_CLASS)
+@TestInstance(Lifecycle.PER_CLASS) 
 public class SoldierTest {
 	private static final Logger LOGGER = Logger.getLogger(SoldierTest.class);
 	
@@ -41,7 +41,7 @@ public class SoldierTest {
 		LOGGER.info("before: " + tank.getIsUnderRepaired());
 		try {
 			soldier.doRepairTransport(tank);
-		} catch (NotRegisterTransportException e) {
+		} catch (NotRegisterTransportException e) { 
 			LOGGER.error(e);
 		}catch(RepairSpecializationException e) {
 			LOGGER.error(e);
@@ -62,8 +62,8 @@ public class SoldierTest {
 	void comeToRecruiterFromSoldierTest(Soldier soldier) {
 		MilitaryRecruiter militaryRecruiter = new MilitaryRecruiter();
 		LOGGER.info("before: " + militaryRecruiter);
-		militaryRecruiter =  soldier
-				.comeToRecruiterFromSoldier(soldier, 1300, RecruiterRank.RANK1_EMPL);
+		militaryRecruiter = soldier
+				.comeToRecruiterFromSoldier(1300, RecruiterRank.RANK1_EMPL);
 		LOGGER.info("after: " + militaryRecruiter);
 	}
 	List<HandWeapon> sourceListHandWeapon (){
@@ -72,7 +72,7 @@ public class SoldierTest {
 	}
 	List<Soldier> sourceListSoldier () {
 		return Arrays.asList(new Soldier(1, "Sam", Gender.MALE, LocalDate.of(2000, 1, 1), 
-				true, MilitaryRank.MECHANIC, SpecializationMilitary.TANKS,sourceListHandWeapon()));
+				true, MilitaryRank.MECHANIC, SpecializationMilitary.TANK,sourceListHandWeapon()));
 	}
 	List<Tank> sourceTank() {
 		return Arrays.asList(new Tank("someT", 5, 2, true, TypeTransportRegistration.NONE, false, 701));
@@ -81,6 +81,6 @@ public class SoldierTest {
 		return Arrays.asList(Arguments.arguments(
 				new Tank("someT", 5, 2, true, TypeTransportRegistration.MILITARY, false, 701),
 				new Soldier(1, "Sam", Gender.MALE, LocalDate.of(2000, 1, 1), 
-						true, MilitaryRank.MECHANIC, SpecializationMilitary.TANKS,sourceListHandWeapon())));
+						true, MilitaryRank.MECHANIC, SpecializationMilitary.TANK,sourceListHandWeapon())));
 	}
 }

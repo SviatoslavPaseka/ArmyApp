@@ -2,6 +2,8 @@ package com.solvd.laba.army.model.person;
 
 import java.time.LocalDate;
 
+import org.apache.commons.lang3.StringUtils;
+
 import com.solvd.laba.army.exceptoins.IncorrectYearException;
 import com.solvd.laba.army.model.enums.Gender;
 
@@ -17,7 +19,7 @@ public abstract class Person {
 
 	public Person(Integer id, String name, Gender gender, LocalDate dob, Boolean haveMedicalExamination) {
 		this.id = id;
-		this.name = name;
+		this.name = StringUtils.defaultString(name, "Unnamed");
 		this.gender = gender;
 		this.dob = dob;
 		this.haveMedicalExamination = haveMedicalExamination;

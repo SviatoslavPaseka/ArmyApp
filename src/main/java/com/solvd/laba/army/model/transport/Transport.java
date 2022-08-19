@@ -1,5 +1,7 @@
 package com.solvd.laba.army.model.transport;
 
+import org.apache.commons.lang3.StringUtils;
+
 import com.solvd.laba.army.exceptoins.NegativeNumberException;
 import com.solvd.laba.army.model.enums.SpecializationMilitary;
 import com.solvd.laba.army.model.enums.TypeTransportRegistration;
@@ -16,7 +18,7 @@ public abstract class Transport {
 
 	public Transport(String name, Integer length, Integer width, Boolean isUnderRepaired,
 			TypeTransportRegistration transportRegistration) {
-		this.name = name;
+		this.name = StringUtils.deleteWhitespace(StringUtils.defaultString(name, "Unnamed"));
 		this.length = length;
 		this.width = width;
 		this.isUnderRepaired = isUnderRepaired;

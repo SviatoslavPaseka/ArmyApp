@@ -9,10 +9,10 @@ import com.solvd.laba.army.model.enums.Gender;
 import com.solvd.laba.army.model.enums.RegistratorHierarchy;
 import com.solvd.laba.army.model.enums.TypeTransportRegistration;
 import com.solvd.laba.army.model.person.Person;
-import com.solvd.laba.army.model.person.interfaces.RegistratorService;
+import com.solvd.laba.army.model.person.interfaces.IRegistrator;
 import com.solvd.laba.army.model.transport.Transport;
 
-public class Registrator extends Person implements RegistratorService{
+public class Registrator extends Person implements IRegistrator{
 	private static final Logger LOGGER = Logger.getLogger(Registrator.class);
 	
 	private Integer numberRegistration = 0;
