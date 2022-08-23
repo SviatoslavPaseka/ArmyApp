@@ -436,3 +436,12 @@ personal weapon:null
 2022-08-19 22:13:08 INFO  ArmyApplication:22 - 550,Fam,MALE,2001-04-18,true,CAPTAIN,TANK,null
 2022-08-19 22:13:08 INFO  ArmyApplication:22 - 964,Wam,FEMALE,2000-04-18,true,CAPTAIN,WHEEL,null
 2022-08-19 22:13:08 INFO  ArmyApplication:22 - 278,Ram,MALE,2000-04-18,true,CAPTAIN,FLYING,null
+2022-08-23 14:35:01 INFO  ArmyApplication:14 - Hello world!
+2022-08-23 14:37:11 INFO  ArmyApplication:16 - Hello world!
+2022-08-23 14:37:11 INFO  ArmyApplication:25 - 310,Sam,MALE,2001-04-18,true,CAPTAIN,FLYING,null
+2022-08-23 14:37:11 INFO  ArmyApplication:25 - 296,Jam,MALE,2002-05-18,true,CAPTAIN,TANK,null
+2022-08-23 14:37:11 INFO  ArmyApplication:25 - 476,Kam,MALE,2003-04-18,true,CAPTAIN,FLYING,null
+2022-08-23 14:37:11 INFO  ArmyApplication:25 - 592,Iam,FEMALE,2000-04-18,true,CAPTAIN,FLYING,null
+2022-08-23 14:37:11 INFO  ArmyApplication:25 - 848,Fam,MALE,2001-04-18,true,CAPTAIN,TANK,null
+2022-08-23 14:37:11 INFO  ArmyApplication:25 - 735,Wam,FEMALE,2000-04-18,true,CAPTAIN,WHEEL,null
+2022-08-23 14:37:11 INFO  ArmyApplication:25 - 946,Ram,MALE,2000-04-18,true,CAPTAIN,FLYING,null

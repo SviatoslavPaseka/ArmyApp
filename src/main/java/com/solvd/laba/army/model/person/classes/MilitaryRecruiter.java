@@ -1,6 +1,8 @@
 package com.solvd.laba.army.model.person.classes;
 
+import java.io.File;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -14,6 +16,7 @@ import com.solvd.laba.army.model.enums.MilitaryRank;
 import com.solvd.laba.army.model.enums.RecruiterRank;
 import com.solvd.laba.army.model.enums.SpecializationMilitary;
 import com.solvd.laba.army.model.enums.TypeHandsWeapon;
+import com.solvd.laba.army.model.files.SoldiersFiles;
 import com.solvd.laba.army.model.person.Person;
 import com.solvd.laba.army.model.person.interfaces.IMilitaryRecruiter;
 import com.solvd.laba.army.model.weapons.HandWeapon;
@@ -104,6 +107,7 @@ public class MilitaryRecruiter extends Person implements IMilitaryRecruiter{
 		return true;
 	}
 
+	@Override
 	public void medicalExamination(Person person) {
 		if (getRecruiterRank() == RecruiterRank.MILITARY_DOCTOR) {
 			person.setHaveMedicalExamination(true);
@@ -118,7 +122,7 @@ public class MilitaryRecruiter extends Person implements IMilitaryRecruiter{
 		
 		if (person.getDob().getYear() + 18 > LocalDate.now().getYear() ||
 			person.getDob().getYear() + 60 <= LocalDate.now().getYear() || !person.getHaveMedicalExamination()) {
-			LOGGER.warn("This person can not be summon to army");
+			LOGGER.warn("This person can not be summon to army: age " + (LocalDate.now().getYear() - person.getDob().getYear()));
 			return null;
 		}
 		return new Soldier(person.getId(),
@@ -142,5 +146,32 @@ public class MilitaryRecruiter extends Person implements IMilitaryRecruiter{
 					.collect(Collectors.toList());
 	}
 	
+	public List<Soldier> getListSoldiers(File file){
+		return SoldiersFiles.readSoldiersFromFile(file);
+	}
+	public List<Soldier> getListSoldiers(List<Person> persons, SpecializationMilitary specializationMilitary){
+		List<Soldier> resultList = new ArrayList<>();
+		for (Person person : persons) {
+			if (Soldier.class.isInstance(person)) {
+				resultList.add((Soldier)person);
+			}else if (Registrator.class.isInstance(person)) {
+				LOGGER.warn("Person with id:" + person.getId() + " and name:" + person.getName() +
+						" is registrator - this can not be a soldier");
+			}else if (MilitaryRecruiter.class.isInstance(person)) {
+				LOGGER.warn("Person with id:" + person.getId() + " and name:" + person.getName() +
+						" is militaty recruiter - this can not be a soldier");
+			}else {
+				resultList.add(summonSoldier((NotMilitaryPerson)person, specializationMilitary));
+			}
+		}
+		return resultList;
+	}
 	
+	public List<Soldier> getListSoldiers(List<NotMilitaryPerson> notMilitaryPersons){
+		List<Soldier> resultList = new ArrayList<Soldier>();
+		for (NotMilitaryPerson  fitPerson: getFitPeople(notMilitaryPersons)) {
+			resultList.add(summonSoldier(fitPerson, SpecializationMilitary.NOT_DETERMINATED));
+		}
+		return resultList;
+	}
 }

@@ -1,23 +1,14 @@
 package com.solvd.laba.army.model;
 
-import java.io.File;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.time.LocalDate;
-import java.time.Month;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.lang3.RandomUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 
-import com.solvd.laba.army.model.enums.Gender;
-import com.solvd.laba.army.model.enums.MilitaryRank;
-import com.solvd.laba.army.model.enums.SpecializationMilitary;
+import com.solvd.laba.army.model.person.classes.MilitaryRecruiter;
+import com.solvd.laba.army.model.person.classes.Registrator;
 import com.solvd.laba.army.model.person.classes.Soldier;
 import com.solvd.laba.army.model.transport.Transport;
 
@@ -28,21 +19,24 @@ public class ArmyBranch<T extends Transport> {
 	private String name;
 	private List<T> transportInThisBranch;
 	private List<Soldier> allSoldierFromThisArmyBranch;
+	private Registrator registrator;
+	private MilitaryRecruiter militaryRecruiter;
 
 	public ArmyBranch() {
 		this.allSoldierFromThisArmyBranch = new ArrayList<Soldier>();
-		this.transportInThisBranch = new ArrayList<T>();
+		this.transportInThisBranch = new ArrayList<>();
 	}
-
-	public ArmyBranch(Integer id, String name, List<T> transportInThisBranch,
-			List<Soldier> allSoldierFromThisArmyBranch) {
+	
+	public ArmyBranch(Integer id, String name, Registrator registrator, MilitaryRecruiter militaryRecruiter) {
 		super();
 		this.id = id;
-		this.name = StringUtils.deleteWhitespace(StringUtils.defaultString(name, "Unnamed"));
-		this.transportInThisBranch = new ArrayList<>(transportInThisBranch);
-		this.allSoldierFromThisArmyBranch = new ArrayList<>(allSoldierFromThisArmyBranch);
+		this.name = name;
+		this.registrator = registrator;
+		this.militaryRecruiter = militaryRecruiter;
+		this.transportInThisBranch = new ArrayList<>();
+		this.allSoldierFromThisArmyBranch = new ArrayList<>();
 	}
-
+	
 	public Integer getId() {
 		return id;
 	}
@@ -73,6 +67,22 @@ public class ArmyBranch<T extends Transport> {
 
 	public void setAllSoldierFromThisArmyBranch(List<Soldier> allSoldierFromThisArmyBranch) {
 		this.allSoldierFromThisArmyBranch = new ArrayList<>(allSoldierFromThisArmyBranch);
+	}
+	
+	public Registrator getRegistrator() {
+		return registrator;
+	}
+
+	public void setRegistrator(Registrator registrator) {
+		this.registrator = registrator;
+	}
+
+	public MilitaryRecruiter getMilitaryRecruiter() {
+		return militaryRecruiter;
+	}
+
+	public void setMilitaryRecruiter(MilitaryRecruiter militaryRecruiter) {
+		this.militaryRecruiter = militaryRecruiter;
 	}
 
 	@Override
@@ -120,70 +130,16 @@ public class ArmyBranch<T extends Transport> {
 	public List<Soldier> getAllUnnamedSoldier() {
 		return allSoldierFromThisArmyBranch.stream()
 				.filter(e -> StringUtils.equalsIgnoreCase(e.getName(), "unnamed"))
+				.map(e -> new Soldier(e.getId(), 
+						"Soldier without name", 
+						e.getGender(), e.getDob(), 
+						e.getHaveMedicalExamination(),
+						e.getMilitaryRank(), 
+						e.getSpecialization(),
+						e.getPersonalWeapon()))
 				.collect(Collectors.toList());
 	}
-
-	public void readSoldiersFromFile(File file) {
-		try {
-			List<String> linesFromFile = Arrays
-					.asList(FileUtils
-							.readFileToString(file, StandardCharsets.UTF_8)
-							.split("\n"));
-			for (String line : linesFromFile) {
-				line = line.replace("\n", "").replace("\r", "");
-				List<String> fromFile = Arrays
-						.asList(line.split(","));
-				
-				Soldier someSoldier = new Soldier();
-				
-				for (int i = 0; i < fromFile.size(); i++) {
-					switch (i) {
-					case 0:
-						someSoldier.setName(fromFile.get(i));
-						break;
-					case 1:
-						someSoldier.setGender(Gender.valueOf(fromFile.get(i).toUpperCase()));
-						break;
-					case 2:
-						someSoldier.setDob(LocalDate.of(0, 1, 1).plusYears(Integer.parseInt(fromFile.get(i))));
-						break;
-					case 3:
-						someSoldier.setDob(someSoldier.getDob()
-								.plusMonths(Month.valueOf(fromFile.get(i).toUpperCase()).getValue() - 1));
-						break;
-					case 4:
-						someSoldier.setDob(someSoldier.getDob().plusDays(Integer.parseInt(fromFile.get(i)) - 1));
-						break;
-					case 5:
-						someSoldier.setHaveMedicalExamination(Boolean.parseBoolean(fromFile.get(i)));
-						break;
-					case 6:
-						someSoldier.setMilitaryRank(MilitaryRank.valueOf(fromFile.get(i).toUpperCase()));
-						break;
-					case 7:
-						someSoldier.setSpecialization(SpecializationMilitary.valueOf(fromFile.get(i).toUpperCase()));
-						break;
-					default:
-						break;
-					}
-
-				}
-				someSoldier.setId(RandomUtils.nextInt(100, 999));
-				this.allSoldierFromThisArmyBranch.add(someSoldier);
-			}
-		} catch (IOException e) {
-			LOGGER.error(e);
-			e.printStackTrace();
-		}
-	}
 	
-	public void saveSoldiersToFile(File file) {
-		try {
-			FileUtils.writeLines(file, StandardCharsets.UTF_8.name(), getAllSoldierFromThisArmyBranch());
-			
-		} catch (IOException e) {
-			LOGGER.error(e);
-			e.printStackTrace();
-		}
-	}
+	
+	
 }

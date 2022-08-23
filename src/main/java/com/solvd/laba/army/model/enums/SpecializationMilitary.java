@@ -1,7 +1,7 @@
 package com.solvd.laba.army.model.enums;
 
 public enum SpecializationMilitary {
-	FLYING("FLYING"), TANK("TANK"), WHEEL("WHEEL");
+	NOT_DETERMINATED("NOT_DETERMINATED"), FLYING("FLYING"), TANK("TANK"), WHEEL("WHEEL");
 	
 	
 	private final String value;
