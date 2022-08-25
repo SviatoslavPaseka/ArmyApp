@@ -14,7 +14,9 @@ public abstract class Transport {
 	private TypeTransportRegistration transportRegistration = TypeTransportRegistration.NONE;
 	private SpecializationMilitary specializationMilitary;
 	
-	public Transport() {}
+	public Transport() {
+		this.name = StringUtils.deleteWhitespace(StringUtils.defaultString(name, "Unnamed"));
+	}
 
 	public Transport(String name, Integer length, Integer width, Boolean isUnderRepaired,
 			TypeTransportRegistration transportRegistration) {

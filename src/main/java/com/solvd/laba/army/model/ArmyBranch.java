@@ -1,5 +1,6 @@
 package com.solvd.laba.army.model;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -7,14 +8,16 @@ import java.util.stream.Collectors;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 
+import com.solvd.laba.army.model.enums.SpecializationMilitary;
+import com.solvd.laba.army.model.person.Person;
 import com.solvd.laba.army.model.person.classes.MilitaryRecruiter;
+import com.solvd.laba.army.model.person.classes.NotMilitaryPerson;
 import com.solvd.laba.army.model.person.classes.Registrator;
 import com.solvd.laba.army.model.person.classes.Soldier;
 import com.solvd.laba.army.model.transport.Transport;
 
 public class ArmyBranch<T extends Transport> {
 	private static final Logger LOGGER = Logger.getLogger(ArmyBranch.class);
-
 	private Integer id;
 	private String name;
 	private List<T> transportInThisBranch;
@@ -23,14 +26,14 @@ public class ArmyBranch<T extends Transport> {
 	private MilitaryRecruiter militaryRecruiter;
 
 	public ArmyBranch() {
+		this.name = StringUtils.defaultString(name, "Unnamed");
 		this.allSoldierFromThisArmyBranch = new ArrayList<Soldier>();
 		this.transportInThisBranch = new ArrayList<>();
 	}
 	
 	public ArmyBranch(Integer id, String name, Registrator registrator, MilitaryRecruiter militaryRecruiter) {
-		super();
 		this.id = id;
-		this.name = name;
+		this.name = StringUtils.defaultString(name, "Unnamed");
 		this.registrator = registrator;
 		this.militaryRecruiter = militaryRecruiter;
 		this.transportInThisBranch = new ArrayList<>();
@@ -50,7 +53,7 @@ public class ArmyBranch<T extends Transport> {
 	}
 
 	public void setName(String name) {
-		this.name = name;
+		this.name = StringUtils.defaultString(name, "Unnamed");
 	}
 
 	public List<T> getTransportInThisBranch() {
@@ -64,9 +67,18 @@ public class ArmyBranch<T extends Transport> {
 	public List<Soldier> getAllSoldierFromThisArmyBranch() {
 		return allSoldierFromThisArmyBranch;
 	}
-
-	public void setAllSoldierFromThisArmyBranch(List<Soldier> allSoldierFromThisArmyBranch) {
-		this.allSoldierFromThisArmyBranch = new ArrayList<>(allSoldierFromThisArmyBranch);
+	
+	public void setAllSoldierFromThisArmyBranch(File fileWithListSoldiers) {
+		this.allSoldierFromThisArmyBranch = getMilitaryRecruiter().getListSoldiers(fileWithListSoldiers);
+		LOGGER.info("Set soldier to this branch from file");
+	}
+	public void setAllSoldierFromThisArmyBranch(List<NotMilitaryPerson> listNotMilitaryPerson) {
+		this.allSoldierFromThisArmyBranch = getMilitaryRecruiter().getListSoldiers(listNotMilitaryPerson);
+		LOGGER.info("Set soldier to this branch from list of not military person");
+	}
+	public void setAllSoldierFromThisArmyBranch(List<Person> listPerson, SpecializationMilitary specializationMilitary) {
+		this.allSoldierFromThisArmyBranch = getMilitaryRecruiter().getListSoldiers(listPerson, specializationMilitary);
+		LOGGER.info("Set soldier to this branch from every person list");
 	}
 	
 	public Registrator getRegistrator() {
@@ -126,7 +138,6 @@ public class ArmyBranch<T extends Transport> {
 			return false;
 		return true;
 	}
-
 	public List<Soldier> getAllUnnamedSoldier() {
 		return allSoldierFromThisArmyBranch.stream()
 				.filter(e -> StringUtils.equalsIgnoreCase(e.getName(), "unnamed"))

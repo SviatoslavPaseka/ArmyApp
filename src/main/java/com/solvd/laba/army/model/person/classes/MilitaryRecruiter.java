@@ -147,6 +147,7 @@ public class MilitaryRecruiter extends Person implements IMilitaryRecruiter{
 	}
 	
 	public List<Soldier> getListSoldiers(File file){
+		LOGGER.info("Received soldier from file");
 		return SoldiersFiles.readSoldiersFromFile(file);
 	}
 	public List<Soldier> getListSoldiers(List<Person> persons, SpecializationMilitary specializationMilitary){
@@ -164,6 +165,7 @@ public class MilitaryRecruiter extends Person implements IMilitaryRecruiter{
 				resultList.add(summonSoldier((NotMilitaryPerson)person, specializationMilitary));
 			}
 		}
+		LOGGER.info("Received soldiers from list random people");
 		return resultList;
 	}
 	
@@ -172,6 +174,13 @@ public class MilitaryRecruiter extends Person implements IMilitaryRecruiter{
 		for (NotMilitaryPerson  fitPerson: getFitPeople(notMilitaryPersons)) {
 			resultList.add(summonSoldier(fitPerson, SpecializationMilitary.NOT_DETERMINATED));
 		}
+		LOGGER.info("Received soldiers from list of not military person");
 		return resultList;
+	}
+	
+	public void fireSoldier(List<Soldier> soldiers) {
+		soldiers.removeAll(soldiers.stream()
+				.filter(e -> !e.getReadinessToMilitary() || e.getMilitaryRank().equals(MilitaryRank.NONE))
+				.collect(Collectors.toList()));
 	}
 }

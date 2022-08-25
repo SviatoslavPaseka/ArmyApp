@@ -5,5 +5,5 @@ import com.solvd.laba.army.model.transport.Transport;
 
 public interface IRegistrator {
 	void registerTransport(Transport transport, TypeTransportRegistration typeTransportRegistration);
-	Integer getSalaryRegistrator();
+	Double getSalaryRegistrator(Double coefficient);
 }

@@ -445,3 +445,30 @@ personal weapon:null
 2022-08-23 14:37:11 INFO  ArmyApplication:25 - 848,Fam,MALE,2001-04-18,true,CAPTAIN,TANK,null
 2022-08-23 14:37:11 INFO  ArmyApplication:25 - 735,Wam,FEMALE,2000-04-18,true,CAPTAIN,WHEEL,null
 2022-08-23 14:37:11 INFO  ArmyApplication:25 - 946,Ram,MALE,2000-04-18,true,CAPTAIN,FLYING,null
+2022-08-24 15:44:03 INFO  ArmyApplication:20 - Hello world!
+2022-08-24 15:44:03 INFO  ArmyBranch:74 - Set soldier to this branch from file
+2022-08-24 15:44:03 INFO  ArmyApplication:24 - 470,Sam,MALE,2001-04-18,true,CAPTAIN,FLYING,null
+2022-08-24 15:44:03 INFO  ArmyApplication:24 - 817,Jam,MALE,2002-05-18,true,CAPTAIN,TANK,null
+2022-08-24 15:44:03 INFO  ArmyApplication:24 - 968,Kam,MALE,2003-04-18,true,CAPTAIN,FLYING,null
+2022-08-24 15:44:03 INFO  ArmyApplication:24 - 770,Iam,FEMALE,2000-04-18,true,CAPTAIN,FLYING,null
+2022-08-24 15:44:03 INFO  ArmyApplication:24 - 573,Fam,MALE,2001-04-18,true,CAPTAIN,TANK,null
+2022-08-24 15:44:03 INFO  ArmyApplication:24 - 894,Wam,FEMALE,2000-04-18,true,CAPTAIN,WHEEL,null
+2022-08-24 15:44:03 INFO  ArmyApplication:24 - 479,Ram,MALE,2000-04-18,true,CAPTAIN,FLYING,null
+2022-08-25 10:00:47 INFO  ArmyApplication:14 - Hello world!
+2022-08-25 10:03:19 INFO  ArmyApplication:14 - Hello world!
+2022-08-25 10:03:39 INFO  ArmyApplication:14 - Hello world!
+2022-08-25 10:24:57 INFO  ArmyApplication:14 - Hello world!
+2022-08-25 10:26:34 INFO  ArmyApplication:14 - Hello world!
+2022-08-25 10:26:59 INFO  ArmyApplication:14 - Hello world!
+2022-08-25 10:28:23 INFO  ArmyApplication:14 - Hello world!
+2022-08-25 11:37:57 INFO  ArmyApplication:16 - Hello world!
+2022-08-25 11:38:19 INFO  ArmyApplication:16 - Hello world!
+2022-08-25 11:39:07 INFO  ArmyApplication:16 - Hello world!
+2022-08-25 11:39:33 INFO  ArmyApplication:16 - Hello world!
+2022-08-25 11:43:34 INFO  ArmyApplication:16 - Hello world!
+2022-08-25 11:45:21 INFO  ArmyApplication:16 - Hello world!
+2022-08-25 11:45:54 INFO  ArmyApplication:16 - Hello world!
+2022-08-25 11:46:11 INFO  ArmyApplication:16 - Hello world!
+2022-08-25 11:46:36 INFO  ArmyApplication:16 - Hello world!
+2022-08-25 11:47:05 INFO  ArmyApplication:16 - Hello world!
+2022-08-25 11:49:42 INFO  ArmyApplication:16 - Hello world!

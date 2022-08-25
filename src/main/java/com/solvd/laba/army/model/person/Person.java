@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import org.apache.commons.lang3.StringUtils;
 
 import com.solvd.laba.army.exceptoins.IncorrectYearException;
+import com.solvd.laba.army.functionalInterfaces.IFitterToMilitaryService;
 import com.solvd.laba.army.model.enums.Gender;
 
 public abstract class Person {
@@ -14,7 +15,9 @@ public abstract class Person {
 	private LocalDate dob;
 	private Boolean haveMedicalExamination;//чи встановлена пригодність для військової служби
 	
+	
 	public Person() {
+		this.name = StringUtils.defaultString(name, "Unnamed");
 	}
 
 	public Person(Integer id, String name, Gender gender, LocalDate dob, Boolean haveMedicalExamination) {
@@ -110,6 +113,16 @@ public abstract class Person {
 			return false;
 		return true;
 	}
-
 	
+	
+	private IFitterToMilitaryService readyToFit = (dob, medical) -> {
+		if ((LocalDate.now().getYear() - dob.getYear() > 18 && LocalDate.now().getYear() - dob.getYear() < 60) && medical == true) {
+			return true;
+		}
+		return false;
+	};
+
+	public Boolean getReadinessToMilitary() {
+		return readyToFit.determine(getDob(), getHaveMedicalExamination());
+	}
 }

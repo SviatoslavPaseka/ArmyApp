@@ -78,7 +78,7 @@ public class SoldiersFiles{
 	
 	public static void saveSoldiersToFile(File file, List<Soldier> soldiers) {
 		try {
-			FileUtils.writeLines(file, StandardCharsets.UTF_8.name(), soldiers);
+			FileUtils.writeLines(file, StandardCharsets.UTF_8.name(), soldiers);//dob: year month day ','
 			
 		} catch (IOException e) {
 			LOGGER.error(e);
