@@ -75,6 +75,4 @@ public class HandWeapon extends Weapon{
 			return false;
 		return true;
 	}
-	
-	
 }

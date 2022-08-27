@@ -553,3 +553,28 @@ Sasha clean gun
 2022-08-26 15:35:33 INFO  DeadLockExample:19 - Misha end
 2022-08-26 15:35:33 INFO  DeadLockExample:26 - Misha shoot
 2022-08-26 15:35:33 INFO  DeadLockExample:15 - Sasha clean gun
+2022-08-26 19:06:01 INFO  ArmyApplication:11 - Hello world!
+
+2022-08-26 19:06:14 INFO  ArmyApplication:11 - Hello world!
+
+2022-08-26 19:06:32 INFO  ArmyApplication:11 - Hello world!
+
+2022-08-26 19:06:32 INFO  DeadLockExample:15 - Misha clean gun
+2022-08-26 19:06:32 INFO  DeadLockExample:18 - Misha shoot
+2022-08-26 19:06:32 INFO  DeadLockExample:19 - Misha end
+2022-08-26 19:06:32 INFO  DeadLockExample:26 - Misha shoot
+2022-08-26 19:06:32 INFO  DeadLockExample:15 - Sasha clean gun
+2022-08-26 19:06:44 INFO  ArmyApplication:10 - Hello world!
+
+2022-08-26 19:06:44 INFO  DeadLockExample:15 - Misha clean gun
+2022-08-26 19:06:44 INFO  DeadLockExample:18 - Misha shoot
+2022-08-26 19:06:44 INFO  DeadLockExample:19 - Misha end
+2022-08-26 19:06:44 INFO  DeadLockExample:26 - Misha shoot
+2022-08-26 19:06:44 INFO  DeadLockExample:15 - Sasha clean gun
+2022-08-26 19:17:37 INFO  ArmyApplication:10 - Hello world!
+
+2022-08-26 19:17:37 INFO  DeadLockExample:15 - Misha clean gun
+2022-08-26 19:17:37 INFO  DeadLockExample:18 - Misha shoot
+2022-08-26 19:17:37 INFO  DeadLockExample:19 - Misha end
+2022-08-26 19:17:37 INFO  DeadLockExample:26 - Misha shoot
+2022-08-26 19:17:37 INFO  DeadLockExample:15 - Sasha clean gun

@@ -10,5 +10,12 @@ public class ArmyApplication {
 		LOGGER.info("Hello world!\n");
 		
 		DeadLockStarting.doDeadLock();
+		
+		
+		
+		
+		
+//		HandWeapon hw = new HandWeapon();
+//		System.out.println(hw);
 	}
 }
