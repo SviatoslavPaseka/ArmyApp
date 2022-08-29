@@ -13,8 +13,7 @@ public abstract class Person {
 	private String name;
 	private Gender gender;
 	private LocalDate dob;
-	private Boolean haveMedicalExamination;//чи встановлена пригодність для військової служби
-	
+	private Boolean haveMedicalExamination;
 	
 	public Person() {
 		this.name = StringUtils.defaultString(name, "Unnamed");
@@ -67,7 +66,6 @@ public abstract class Person {
 		this.haveMedicalExamination = haveMedicalExamination;
 	}
 	
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -113,7 +111,6 @@ public abstract class Person {
 			return false;
 		return true;
 	}
-	
 	
 	private IFitterToMilitaryService readyToFit = (dob, medical) -> {
 		if ((LocalDate.now().getYear() - dob.getYear() > 18 && LocalDate.now().getYear() - dob.getYear() < 60) && medical == true) {

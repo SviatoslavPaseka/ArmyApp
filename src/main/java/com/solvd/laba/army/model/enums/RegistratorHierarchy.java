@@ -17,6 +17,4 @@ public enum RegistratorHierarchy {
 	public Integer getSalary() {
 		return salary;
 	}
-	
-	
 }

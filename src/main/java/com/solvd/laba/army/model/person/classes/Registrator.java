@@ -73,5 +73,4 @@ public class Registrator extends Person implements IRegistrator {
 	public Double getSalaryRegistrator(Double coefficient) {
 		return getRegistratorHierarchy().getSalary() + bonusByRegister.calculate(getNumberRegistration(), coefficient);
 	}
-
 }

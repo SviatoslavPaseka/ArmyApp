@@ -27,8 +27,6 @@ public abstract class Transport {
 		this.transportRegistration = transportRegistration;
 	}
 
-
-
 	public String getName() {
 		return name;
 	}

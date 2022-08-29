@@ -85,5 +85,4 @@ public class SoldiersFiles{
 			e.printStackTrace();
 		}
 	}
-	
 }

@@ -13,7 +13,6 @@ public class Tank extends MilitaryTransport{
 		super.setSpecializationMilitary(SpecializationMilitary.TANK);
 	}
 	public Tank() {
-		// TODO Auto-generated constructor stub
 	}
 	public Integer getId() {
 		return id;
@@ -21,7 +20,6 @@ public class Tank extends MilitaryTransport{
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	
 	
 	@Override
 	public String toString() {
@@ -51,5 +49,4 @@ public class Tank extends MilitaryTransport{
 			return false;
 		return true;
 	}
-
 }

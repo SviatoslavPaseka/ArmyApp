@@ -22,6 +22,4 @@ public enum MilitaryRank {
 	public String getValue() {
 		return value;
 	}
-	
-	
 }

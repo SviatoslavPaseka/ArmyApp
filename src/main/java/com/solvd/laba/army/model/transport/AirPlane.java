@@ -6,9 +6,9 @@ import com.solvd.laba.army.model.enums.TypeTransportRegistration;
 public class AirPlane extends Transport{
 	private Integer id;
 	private Boolean isPassenger;
+	
 	public AirPlane() {
 	}
-	
 	public AirPlane(String name, Integer length, Integer width, Boolean isUnderRepaired,
 			TypeTransportRegistration transportRegistration, Integer id, Boolean isPassenger) {
 		super(name, length, width, isUnderRepaired, transportRegistration);
@@ -67,6 +67,4 @@ public class AirPlane extends Transport{
 			return false;
 		return true;
 	}
-
-	
 }

@@ -1,7 +1,6 @@
 package com.solvd.laba.army.exceptoins;
 
 public class RepairSpecializationException extends IllegalArgumentException{
-
 	public RepairSpecializationException() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -21,5 +20,4 @@ public class RepairSpecializationException extends IllegalArgumentException{
 		super(cause);
 		// TODO Auto-generated constructor stub
 	}
-	
 }

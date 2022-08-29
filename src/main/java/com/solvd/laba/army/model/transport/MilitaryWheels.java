@@ -10,7 +10,6 @@ public class MilitaryWheels extends MilitaryTransport{
 
 	public MilitaryWheels() {
 	}
-
 	public MilitaryWheels(String name, Integer length, Integer width, Boolean isUnderRepaired,
 			TypeTransportRegistration typeTransportRegistration, Boolean isArmed, Integer id, Integer numberOfWheel) {
 		super(name, length, width, isUnderRepaired, typeTransportRegistration, isArmed);
@@ -71,5 +70,4 @@ public class MilitaryWheels extends MilitaryTransport{
 			return false;
 		return true;
 	}
-	
 }

@@ -21,10 +21,7 @@ import com.solvd.laba.army.model.person.Person;
 import com.solvd.laba.army.model.person.interfaces.IMilitaryRecruiter;
 import com.solvd.laba.army.model.weapons.HandWeapon;
 
-
-//create a fireSoldier method
 public class MilitaryRecruiter extends Person implements IMilitaryRecruiter{
-
 	private static final Logger LOGGER = Logger.getLogger(MilitaryRecruiter.class);
 	
 	private RecruiterRank recruiterRank; 

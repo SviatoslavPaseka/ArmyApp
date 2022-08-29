@@ -1,7 +1,6 @@
 package com.solvd.laba.army.exceptoins;
 
 public class IncorrectYearException extends IllegalArgumentException{
-
 	public IncorrectYearException() {
 		super();
 	}
@@ -17,5 +16,4 @@ public class IncorrectYearException extends IllegalArgumentException{
 	public IncorrectYearException(Throwable cause) {
 		super(cause);
 	}
-	
 }

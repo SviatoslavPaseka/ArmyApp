@@ -58,5 +58,4 @@ public class WeaponToMassDestruction extends Weapon{
 			return false;
 		return true;
 	}
-	
 }

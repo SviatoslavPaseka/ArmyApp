@@ -47,6 +47,4 @@ public abstract class MilitaryTransport extends Transport {
 			return false;
 		return true;
 	}
-	
-	
 }

@@ -18,6 +18,7 @@ import com.solvd.laba.army.model.transport.Transport;
 
 public class ArmyBranch<T extends Transport> {
 	private static final Logger LOGGER = Logger.getLogger(ArmyBranch.class);
+	
 	private Integer id;
 	private String name;
 	private List<T> transportInThisBranch;
@@ -150,7 +151,4 @@ public class ArmyBranch<T extends Transport> {
 						e.getPersonalWeapon()))
 				.collect(Collectors.toList());
 	}
-	
-	
-	
 }

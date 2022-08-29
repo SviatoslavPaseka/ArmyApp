@@ -11,5 +11,4 @@ public interface IMilitaryRecruiter {
 	void medicalExamination(Person person);
 	Soldier summonSoldier(NotMilitaryPerson person, SpecializationMilitary specializationMilitary);
 	List<NotMilitaryPerson> getFitPeople(List<NotMilitaryPerson> allPeople);
-	
 }

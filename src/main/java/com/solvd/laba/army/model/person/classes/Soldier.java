@@ -22,7 +22,6 @@ import com.solvd.laba.army.model.transport.Transport;
 import com.solvd.laba.army.model.weapons.HandWeapon;
  
 public class Soldier extends Person implements ISoldier{
-	
 	private static final Logger LOGGER = Logger.getLogger(Soldier.class);
 	
 	private MilitaryRank militaryRank;
@@ -138,7 +137,6 @@ public class Soldier extends Person implements ISoldier{
 	
 	@Override
 	public void doRepairTransport(Transport transport) {
-		//refactored 
 		if (transport.getTransportRegistration().equals(TypeTransportRegistration.NONE)) {
 			LOGGER.error("This transport does not has any regisatration");
 			throw new NotRegisterTransportException("This transport does not has any regisatration");
@@ -172,5 +170,4 @@ public class Soldier extends Person implements ISoldier{
 						toMap(HandWeapon::getGunId, HandWeapon::getTypeHadsWeapon));
 		return result;
 	}
-	
 }

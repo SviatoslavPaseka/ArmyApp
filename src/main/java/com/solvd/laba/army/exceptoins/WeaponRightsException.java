@@ -1,10 +1,8 @@
 package com.solvd.laba.army.exceptoins;
 
 public class WeaponRightsException extends RuntimeException{
-
 	public WeaponRightsException() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public WeaponRightsException(String message, Throwable cause, boolean enableSuppression,
@@ -27,5 +25,4 @@ public class WeaponRightsException extends RuntimeException{
 		super(cause);
 		// TODO Auto-generated constructor stub
 	}
-	
 }

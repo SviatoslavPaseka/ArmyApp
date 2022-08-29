@@ -4,7 +4,6 @@ import java.time.LocalDate;
 
 import com.solvd.laba.army.exceptoins.IncorrectYearException;
 
-
 public abstract class Weapon {
 	private LocalDate yearManufactured;
 	

@@ -12,7 +12,7 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
 import com.solvd.laba.army.model.enums.TypeTransportRegistration;
-import static com.solvd.laba.army.model.enums.TypeTransportRegistration.*;
+import static com.solvd.laba.army.model.enums.TypeTransportRegistration.MILITARY;
 import com.solvd.laba.army.model.person.classes.Registrator;
 import com.solvd.laba.army.model.transport.AirPlane;
 import com.solvd.laba.army.model.transport.MilitaryWheels;
